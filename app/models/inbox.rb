@@ -4,8 +4,8 @@ class Inbox < ActiveRecord::Base
   belongs_to :user
 
   def summary
-  	message = self.name + ": " + self.active_messages.count.to_s
-  	message << " (" + self.unread_active_messages.count.to_s + " unread)" if unread_active_messages.count > 0
+  	message = self.name + ": " + self.active_presentations.count.to_s
+  	message << " (" + self.unread_active_presentations.count.to_s + " unread)" if unread_active_presentations.count > 0
   	message
   end
 

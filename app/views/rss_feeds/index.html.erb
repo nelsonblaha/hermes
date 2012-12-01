@@ -1,0 +1,27 @@
+<h1>Listing rss_feeds</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>Url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rss_feeds.each do |rss_feed| %>
+  <tr>
+    <td><%= rss_feed.user_id %></td>
+    <td><%= rss_feed.name %></td>
+    <td><%= rss_feed.url %></td>
+    <td><%= link_to 'Show', rss_feed %></td>
+    <td><%= link_to 'Edit', edit_rss_feed_path(rss_feed) %></td>
+    <td><%= link_to 'Destroy', rss_feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rss feed', new_rss_feed_path %>

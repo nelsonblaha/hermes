@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @rss_feed.user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @rss_feed.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @rss_feed.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_rss_feed_path(@rss_feed) %> |
+<%= link_to 'Back', rss_feeds_path %>

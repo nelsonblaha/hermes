@@ -1,5 +1,11 @@
 Hermes::Application.routes.draw do
   
+  resources :messages
+
+
+  resources :rss_feeds
+
+
   resources :inboxes
 
 

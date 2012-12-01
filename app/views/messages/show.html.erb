@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Summary:</b>
+  <%= @message.summary %>
+</p>
+
+<p>
+  <b>Message source:</b>
+  <%= @message.message_source_id %>
+</p>
+
+<p>
+  <b>Message source type:</b>
+  <%= @message.message_source_type %>
+</p>
+
+<p>
+  <b>Read:</b>
+  <%= @message.read %>
+</p>
+
+<p>
+  <b>Dismissed:</b>
+  <%= @message.dismissed %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

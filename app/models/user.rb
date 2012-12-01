@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :inboxes
+  has_many :rss_feeds, as: :message_sources
 end
