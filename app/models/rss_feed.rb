@@ -2,18 +2,14 @@ class RssFeed < ActiveRecord::Base
   attr_accessible :name, :url, :user_id
 
   has_one :user
+  has_many :messages, as: :message_source
 
   def new_messages
-  	require 'active_support'
-
-  	new_messages = []
-
-  	hash = Hash.from_xml(HTTParty.get(self.url))
-  	hash['rss']['channel']['item'].each do |item|
-  		new_message = Message.create
-  		new_message.xml_traits(item)
-  		new_messages << new_message
-  	end
-  	messages
+    new_messages = []
+    Feedzirra::Feed.fetch_and_parse(self.url).entries.each do |entry|
+      title = entry.title || "no title"
+      new_messages << self.messages.create(summary:title)
+    end
+    return new_messages
   end
 end

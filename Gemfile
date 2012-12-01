@@ -4,6 +4,8 @@ gem 'rails', '3.2.9'
 
 gem 'httparty'
 gem 'devise'
+#for parsing rss feeds
+  gem 'feedzirra'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
