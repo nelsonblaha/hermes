@@ -9,12 +9,12 @@ class Inbox < ActiveRecord::Base
   	message
   end
 
-  def active_messages
+  def active_presentations
   	#TODO
   	[]
   end
 
-  def unread_active_messages
+  def unread_active_presentations
   	#TODO
   	[]
   end
