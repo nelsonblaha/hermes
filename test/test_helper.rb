@@ -3,11 +3,16 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
+  class Test::Unit::TestCase
+  	include FactoryGirl::Syntax::Methods
+  end
 
-  # Add more helper methods to be used by all tests here...
+  def setup
+  	@default = create(:user)
+
+    #stub current_user with the default user
+    if @controller
+    	@controller.stubs(:current_user).returns(@default)
+    end
+  end
 end
