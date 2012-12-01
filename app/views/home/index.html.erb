@@ -1,2 +1,9 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div id="inbox_list">
+	<h2>Inboxes</h2>
+	<ul id="inbox_list">
+		<% current_user.inboxes.each do |inbox| %>
+			<li class="inbox_summary"><%= inbox.summary %></li>
+		<% end %>
+	</ul>
+	<%= link_to 'create new', new_inbox_path %>
+</div>

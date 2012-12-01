@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @inbox.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @inbox.user.email %>
+</p>
+
+<p>
+  <b>Messages expire:</b>
+  <%= @inbox.messages_expire %>
+</p>
+
+<p>
+  <b>Message expiration seconds:</b>
+  <%= @inbox.message_expiration_seconds %>
+</p>
+
+
+<%= link_to 'Edit', edit_inbox_path(@inbox) %> |
+<%= link_to 'Back', inboxes_path %>
