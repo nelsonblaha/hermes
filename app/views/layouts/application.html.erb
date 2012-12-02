@@ -17,7 +17,7 @@
 
 <%= render 'layouts/session' %>
 
-<% if (current_user && current_user.authorized) || request.fullpath == '/users/sign_in'%>
+<% if (current_user && current_user.authorized) || request.fullpath == '/users/sign_in' || request.fullpath == '/users/sign_up' %>
 	<%= render 'layouts/navigation' %>
 	<%= yield %>
 <% end %>
