@@ -15,6 +15,9 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
 
+    @message.read = true
+    @message.save
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @message }
