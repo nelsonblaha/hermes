@@ -1,0 +1,23 @@
+<h1>Listing always_true_contexts</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @always_true_contexts.each do |always_true_context| %>
+  <tr>
+    <td><%= always_true_context.user_id %></td>
+    <td><%= link_to 'Show', always_true_context %></td>
+    <td><%= link_to 'Edit', edit_always_true_context_path(always_true_context) %></td>
+    <td><%= link_to 'Destroy', always_true_context, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Always true context', new_always_true_context_path %>

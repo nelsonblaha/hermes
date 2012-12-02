@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202025930) do
+ActiveRecord::Schema.define(:version => 20121202071656) do
 
   create_table "inboxes", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20121202025930) do
     t.integer  "message_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "rule_id"
   end
 
   create_table "rss_feeds", :force => true do |t|
