@@ -1,0 +1,7 @@
+remove traits
+
+validate Message.unique to be unique within messages of its MessageSource
+
+rule_owner_id and rule_owner_type remove 'rule' prefix
+
+figure out how to keep from passing user into MessageSource.check, self.user isn't working

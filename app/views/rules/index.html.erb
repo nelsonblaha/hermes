@@ -1,0 +1,35 @@
+<h1>Listing rules</h1>
+
+<table>
+  <tr>
+    <th>Rule owner</th>
+    <th>Rule owner type</th>
+    <th>Name</th>
+    <th>Mode</th>
+    <th>Limit</th>
+    <th>Meta rule</th>
+    <th>Meta or mode</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rules.each do |rule| %>
+  <tr>
+    <td><%= rule.rule_owner_id %></td>
+    <td><%= rule.rule_owner_type %></td>
+    <td><%= rule.name %></td>
+    <td><%= rule.mode %></td>
+    <td><%= rule.limit %></td>
+    <td><%= rule.meta_rule_id %></td>
+    <td><%= rule.meta_or_mode %></td>
+    <td><%= link_to 'Show', rule %></td>
+    <td><%= link_to 'Edit', edit_rule_path(rule) %></td>
+    <td><%= link_to 'Destroy', rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rule', new_rule_path %>

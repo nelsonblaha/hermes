@@ -3,7 +3,7 @@
 		<h2>Inboxes</h2>
 		<ul id="inbox_list">
 			<% current_user.inboxes.each do |inbox| %>
-				<li class="inbox_summary"><%= inbox.summary %></li>
+				<li class="inbox_summary"><%= link_to inbox.summary, inbox %></li>
 			<% end %>
 		</ul>
 		<%= link_to 'create new', new_inbox_path %>

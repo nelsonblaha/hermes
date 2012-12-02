@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Summary</th>
     <th>Message source</th>
     <th>Message source type</th>
     <th>Read</th>
@@ -14,7 +13,6 @@
 
 <% @messages.each do |message| %>
   <tr>
-    <td><%= message.summary %></td>
     <td><%= message.message_source_id %></td>
     <td><%= message.message_source_type %></td>
     <td><%= message.read %></td>

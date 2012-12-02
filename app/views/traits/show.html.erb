@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Traited:</b>
+  <%= @trait.traited_id %>
+</p>
+
+<p>
+  <b>Traited type:</b>
+  <%= @trait.traited_type %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @trait.name %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @trait.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_trait_path(@trait) %> |
+<%= link_to 'Back', traits_path %>

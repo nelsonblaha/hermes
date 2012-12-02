@@ -1,5 +1,14 @@
 Hermes::Application.routes.draw do
   
+  resources :presentations
+
+
+  resources :rules
+
+
+  resources :traits
+
+
   resources :messages
 
 

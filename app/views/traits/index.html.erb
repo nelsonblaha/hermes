@@ -1,0 +1,29 @@
+<h1>Listing traits</h1>
+
+<table>
+  <tr>
+    <th>Traited</th>
+    <th>Traited type</th>
+    <th>Name</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @traits.each do |trait| %>
+  <tr>
+    <td><%= trait.traited_id %></td>
+    <td><%= trait.traited_type %></td>
+    <td><%= trait.name %></td>
+    <td><%= trait.value %></td>
+    <td><%= link_to 'Show', trait %></td>
+    <td><%= link_to 'Edit', edit_trait_path(trait) %></td>
+    <td><%= link_to 'Destroy', trait, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Trait', new_trait_path %>

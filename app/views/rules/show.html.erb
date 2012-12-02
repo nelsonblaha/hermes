@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Rule owner:</b>
+  <%= @rule.rule_owner_id %>
+</p>
+
+<p>
+  <b>Rule owner type:</b>
+  <%= @rule.rule_owner_type %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @rule.name %>
+</p>
+
+<p>
+  <b>Mode:</b>
+  <%= @rule.mode %>
+</p>
+
+<p>
+  <b>Limit:</b>
+  <%= @rule.limit %>
+</p>
+
+<p>
+  <b>Meta rule:</b>
+  <%= @rule.meta_rule_id %>
+</p>
+
+<p>
+  <b>Meta or mode:</b>
+  <%= @rule.meta_or_mode %>
+</p>
+
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>

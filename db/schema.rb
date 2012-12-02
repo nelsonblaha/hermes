@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201213543) do
+ActiveRecord::Schema.define(:version => 20121202025930) do
 
   create_table "inboxes", :force => true do |t|
     t.string   "name"
@@ -23,13 +23,21 @@ ActiveRecord::Schema.define(:version => 20121201213543) do
   end
 
   create_table "messages", :force => true do |t|
-    t.text     "summary"
+    t.text     "traits_hash"
     t.integer  "message_source_id"
     t.string   "message_source_type"
     t.boolean  "read"
     t.boolean  "dismissed"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "unique_identifier"
+  end
+
+  create_table "presentations", :force => true do |t|
+    t.integer  "inbox_id"
+    t.integer  "message_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "rss_feeds", :force => true do |t|
@@ -38,6 +46,28 @@ ActiveRecord::Schema.define(:version => 20121201213543) do
     t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "rules", :force => true do |t|
+    t.integer  "rule_owner_id"
+    t.string   "rule_owner_type"
+    t.string   "name"
+    t.integer  "mode"
+    t.string   "limit"
+    t.integer  "meta_rule_id"
+    t.boolean  "meta_or_mode"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.text     "logic"
+  end
+
+  create_table "traits", :force => true do |t|
+    t.integer  "traited_id"
+    t.string   "traited_type"
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

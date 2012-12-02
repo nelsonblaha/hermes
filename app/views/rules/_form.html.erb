@@ -1,0 +1,45 @@
+<%= form_for(@rule) do |f| %>
+  <% if @rule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rule.errors.count, "error") %> prohibited this rule from being saved:</h2>
+
+      <ul>
+      <% @rule.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rule_owner_id %><br />
+    <%= f.number_field :rule_owner_id %>
+  </div>
+  <div class="field">
+    <%= f.label :rule_owner_type %><br />
+    <%= f.text_field :rule_owner_type %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :mode %><br />
+    <%= f.number_field :mode %>
+  </div>
+  <div class="field">
+    <%= f.label :limit %><br />
+    <%= f.text_field :limit %>
+  </div>
+  <div class="field">
+    <%= f.label :meta_rule_id %><br />
+    <%= f.number_field :meta_rule_id %>
+  </div>
+  <div class="field">
+    <%= f.label :meta_or_mode %><br />
+    <%= f.check_box :meta_or_mode %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

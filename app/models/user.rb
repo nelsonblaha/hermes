@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
 
   has_many :inboxes
   has_many :rss_feeds, as: :message_sources
+  has_many :rules, as: :rule_owner
 end
