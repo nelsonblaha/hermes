@@ -3,6 +3,7 @@ class Message < ActiveRecord::Base
 
   belongs_to :message_source, polymorphic: true
   has_many :traits, as: :traited
+  has_many :presentations, dependent: :destroy
   has_many :inboxes, through: :presentations
 
   def subject

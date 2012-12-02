@@ -15,6 +15,12 @@ class InboxesController < ApplicationController
   def show
     @inbox = Inbox.find(params[:id])
 
+    #TODO optimize
+    @active_messages = []
+    @inbox.messages.each do |m|
+      @active_messages << m if !m.dismissed
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @inbox }

@@ -5,15 +5,20 @@
 <table>
 	<tr>
 		<th>Subject</th>
-		<th></th>
+		<th>Dismiss</th>
 	</tr>
-	<% @inbox.messages.each do |m| %>
+	<% @active_messages.each do |m| %>
 		<tr>
-			<% if m.read %>
-				<td><i><%= link_to m.subject,m %></i></td>
-			<% else %>
-				<td><%= link_to m.subject,m  %></td>
-			<% end %>
+			<td class="message_subject">
+				<% if m.read %>
+					<i><%= link_to m.subject,m %></i>
+				<% else %>
+					<%= link_to m.subject,m  %>
+				<% end %>
+			</td>
+			<td class="message_dismiss">
+				<%= link_to 'dismiss', dismiss_message_path(id:m.id,return_url:request.fullpath) %>
+			</td>
 		</tr>	
 	<% end %>
 </table>
