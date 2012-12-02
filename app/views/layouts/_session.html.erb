@@ -1,5 +1,5 @@
 <% if current_user %>
-	signed in as <%= current_user.email %> (<%= link_to 'sign out', destroy_user_session_path, :method => :delete  %>)
+	signed in as <%= current_user.email %> (<%= link_to 'sign out', destroy_user_session_path, :method => :delete %>)
 <% else %>
 	<%= link_to 'sign in', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %>
 <% end %>

@@ -16,9 +16,15 @@
 </div>
 
 <%= render 'layouts/session' %>
-<%= render 'layouts/navigation' %>
 
-<%= yield %>
+<% if (current_user && current_user.authorized) || request.fullpath == '/users/sign_in'%>
+	<%= render 'layouts/navigation' %>
+	<%= yield %>
+<% end %>
+
+<% if current_user && !current_user.authorized %>
+	<p>Your account is pending approval. Contact @blaha to speed things along.</p>
+<% end %>
 
 </body>
 </html>
