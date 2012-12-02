@@ -5,6 +5,7 @@ class RulesController < ApplicationController
   # scaffolding methods
     def index
       @rules = Rule.all
+      @title = "Hermes-wide rules"
 
       respond_to do |format|
         format.html # index.html.erb
@@ -85,6 +86,7 @@ class RulesController < ApplicationController
 
   def rules_index_for_inbox
     inbox = Inbox.find(params[:id])
+    @title = "rules affecting inbox: "+inbox.name
     @rules = []
     #TODO optimize
     Presentation.where('rule_id IS NOT NULL AND inbox_id = ?',inbox.id).each do |p|

@@ -17,8 +17,5 @@
 
 TODO <p><%= link_to 'rules affecting this inbox',rules_index_for_inbox_path(id:@inbox.id) %></p>
 
-<!-- TODO rule should be for this inbox by default -->
-<p><%= link_to 'add new rule', new_rule_path %></p>
-
 <%= link_to 'Edit', edit_inbox_path(@inbox) %> |
 <%= link_to 'Back', inboxes_path %>
