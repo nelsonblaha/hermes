@@ -5,10 +5,15 @@
 <table>
 	<tr>
 		<th>Subject</th>
+		<th></th>
 	</tr>
 	<% @inbox.messages.each do |m| %>
 		<tr>
-			<td><%= link_to m.subject,m %></td>
+			<% if m.read %>
+				<td><i><%= link_to m.subject,m %></i></td>
+			<% else %>
+				<td><%= link_to m.subject,m  %></td>
+			<% end %>
 		</tr>	
 	<% end %>
 </table>
