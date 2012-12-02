@@ -77,7 +77,7 @@ class InboxesController < ApplicationController
     @inbox.destroy
 
     respond_to do |format|
-      format.html { redirect_to inboxes_url }
+      format.html { redirect_to root_url, notice:'Inbox Destroyed' }
       format.json { head :no_content }
     end
   end

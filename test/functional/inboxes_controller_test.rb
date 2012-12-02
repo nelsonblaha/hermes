@@ -44,6 +44,6 @@ class InboxesControllerTest < ActionController::TestCase
       delete :destroy, id: @inbox
     end
 
-    assert_redirected_to inboxes_path
+    assert_redirected_to root_url
   end
 end

@@ -1,20 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Traits Hash:</b>
-  <%= @message.traits_hash %>
-</p>
-
-<p>
-  <b>Message source:</b>
-  <%= @message.message_source_id %>
-</p>
-
-<p>
-  <b>Message source type:</b>
-  <%= @message.message_source_type %>
-</p>
-
+<% eval(@message.traits_hash).each do |trait| %>
+  <p>
+    <b><%= trait[0].to_s %>:</b> 
+    <%= trait[1].to_s %>
+  </p>
+<% end %>
 <p>
   <b>Read:</b>
   <%= @message.read %>

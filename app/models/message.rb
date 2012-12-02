@@ -4,4 +4,9 @@ class Message < ActiveRecord::Base
   belongs_to :message_source, polymorphic: true
   has_many :traits, as: :traited
   has_many :inboxes, through: :presentations
+
+  def subject
+  	#TODO cleverly figure out message's subject
+  	self.id.to_s
+  end
 end

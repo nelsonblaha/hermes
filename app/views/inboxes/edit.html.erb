@@ -3,4 +3,5 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @inbox %> |
-<%= link_to 'Back', inboxes_path %>
+<%= link_to 'Back', inboxes_path %> |
+<%= link_to 'Destroy Inbox', @inbox, method: :delete, data: { confirm: 'Are you sure?' } %>

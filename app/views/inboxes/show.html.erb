@@ -1,6 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @inbox.name %></h1>
+<h1>inbox: <%= @inbox.name %></h1>
+
+<table>
+	<tr>
+		<th>Subject</th>
+	</tr>
+	<% @inbox.messages.each do |m| %>
+		<tr>
+			<td><%= link_to message.subject,message %></td>
+		</tr>	
+	<% end %>
+</table>
+
+<p><i>end of messages</i></p>
+
+<p>TODO message sources link list, for each also link to list of rules involving message source and this inbox</p>
+
+<p>TODO link to add new message source to this inbox. default rule sends all messages to this inbox </p>
 
 <%= link_to 'Edit', edit_inbox_path(@inbox) %> |
 <%= link_to 'Back', inboxes_path %>
