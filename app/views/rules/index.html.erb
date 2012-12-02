@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Rule owner</th>
-    <th>Rule owner type</th>
     <th>Name</th>
     <th>Logic</th>
     <th></th>
@@ -14,7 +13,6 @@
 <% @rules.each do |rule| %>
   <tr>
     <td><%= rule.rule_owner_id %></td>
-    <td><%= rule.rule_owner_type %></td>
     <td><%= rule.name %></td>
     <td><%= rule.logic %></td>
     <td><%= link_to 'Show', rule %></td>
