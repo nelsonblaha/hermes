@@ -41,6 +41,7 @@ class RssFeedsController < ApplicationController
   # POST /rss_feeds.json
   def create
     @rss_feed = RssFeed.new(params[:rss_feed])
+    @rss_feed.user_id = current_user.id
 
     respond_to do |format|
       if @rss_feed.save

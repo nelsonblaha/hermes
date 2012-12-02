@@ -8,7 +8,7 @@
 	</tr>
 	<% @inbox.messages.each do |m| %>
 		<tr>
-			<td><%= link_to message.subject,message %></td>
+			<td><%= link_to m.subject,m %></td>
 		</tr>	
 	<% end %>
 </table>

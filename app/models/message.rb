@@ -6,7 +6,11 @@ class Message < ActiveRecord::Base
   has_many :inboxes, through: :presentations
 
   def subject
-  	#TODO cleverly figure out message's subject
-  	self.id.to_s
+  	#TODO cleverly figure out message's subject by iterating through possible subject hash keys such as 'title','subject',etc  		
+  	if eval(self.traits_hash)['title']
+  		eval(self.traits_hash)['title']
+  	else 
+  		self.id.to_s
+  	end
   end
 end

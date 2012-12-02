@@ -7,7 +7,7 @@ class Rule < ActiveRecord::Base
  	def process(message)
  		#create logic filter
 	 		filter = self.logic
-	 		message.traits_hash.each do |trait|
+	 		eval(message.traits_hash).each do |trait|
 	 			filter.gsub!(trait[0].to_s,"'"+trait[1].to_s+"'")
 	 		end
 	 	#create context filter

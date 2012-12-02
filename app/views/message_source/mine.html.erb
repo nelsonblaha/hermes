@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<th>Name</th>
+	</tr>
+	<% @message_sources.each do |source| %>
+		<tr>
+			<td><%= link_to source.name, source %></td>
+		</tr>	
+	<% end %>
+</table>
+
+<p><%= link_to 'new message source', message_source_directory_path %></p>
