@@ -16,11 +16,12 @@ class Inbox < ActiveRecord::Base
   end
 
   def unread_active_presentations
-  	unread_active_presentations = []
+  	unread_active = []
     self.presentations.each do |p|
       if p.message && !p.rule && !p.message.read
-        unread_active_presentations << p
+        unread_active << p
       end
     end
+    unread_active
   end
 end
