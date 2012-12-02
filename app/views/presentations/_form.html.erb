@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :inbox_id %><br />
-    <%= f.number_field :inbox_id %>
+    <%= f.label :rule %>
+    <%= f.collection_select :rule_id, current_user.rules, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :message_id %><br />
-    <%= f.number_field :message_id %>
+    <%= f.label :inbox %>
+    <%= f.collection_select :inbox_id, current_user.inboxes, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

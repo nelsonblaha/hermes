@@ -43,7 +43,9 @@ class RulesController < ApplicationController
     # POST /rules
     # POST /rules.json
     def create
-      @rule = Rule.new(params[:rule],rule_owner_id:current_user.id,rule_owner_type:'User')
+      @rule = Rule.new(params[:rule])
+      @rule.rule_owner_id = current_user.id
+      @rule.rule_owner_type = "User"
 
       respond_to do |format|
         if @rule.save

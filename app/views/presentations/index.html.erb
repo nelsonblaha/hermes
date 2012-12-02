@@ -1,9 +1,8 @@
-<h1>Listing presentations</h1>
+<h1><%= @title %></h1>
 
 <table>
   <tr>
     <th>Inbox</th>
-    <th>Message</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +11,6 @@
 <% @presentations.each do |presentation| %>
   <tr>
     <td><%= presentation.inbox_id %></td>
-    <td><%= presentation.message_id %></td>
     <td><%= link_to 'Show', presentation %></td>
     <td><%= link_to 'Edit', edit_presentation_path(presentation) %></td>
     <td><%= link_to 'Destroy', presentation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
