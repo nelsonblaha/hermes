@@ -4,7 +4,7 @@ Hermes::Application.routes.draw do
 
 
   resources :rules
-
+  match "/rules_index_for_inbox" => "rules#rules_index_for_inbox"
 
   resources :traits
 

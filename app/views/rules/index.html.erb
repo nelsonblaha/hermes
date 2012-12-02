@@ -5,10 +5,7 @@
     <th>Rule owner</th>
     <th>Rule owner type</th>
     <th>Name</th>
-    <th>Mode</th>
-    <th>Limit</th>
-    <th>Meta rule</th>
-    <th>Meta or mode</th>
+    <th>Logic</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,10 +16,7 @@
     <td><%= rule.rule_owner_id %></td>
     <td><%= rule.rule_owner_type %></td>
     <td><%= rule.name %></td>
-    <td><%= rule.mode %></td>
-    <td><%= rule.limit %></td>
-    <td><%= rule.meta_rule_id %></td>
-    <td><%= rule.meta_or_mode %></td>
+    <td><%= rule.logic %></td>
     <td><%= link_to 'Show', rule %></td>
     <td><%= link_to 'Edit', edit_rule_path(rule) %></td>
     <td><%= link_to 'Destroy', rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -16,25 +16,9 @@
 </p>
 
 <p>
-  <b>Mode:</b>
-  <%= @rule.mode %>
+  <b>Logic:</b>
+  <%= @rule.logic %>
 </p>
-
-<p>
-  <b>Limit:</b>
-  <%= @rule.limit %>
-</p>
-
-<p>
-  <b>Meta rule:</b>
-  <%= @rule.meta_rule_id %>
-</p>
-
-<p>
-  <b>Meta or mode:</b>
-  <%= @rule.meta_or_mode %>
-</p>
-
 
 <%= link_to 'Edit', edit_rule_path(@rule) %> |
 <%= link_to 'Back', rules_path %>

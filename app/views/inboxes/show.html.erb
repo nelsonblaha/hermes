@@ -15,9 +15,10 @@
 
 <p><i>end of messages</i></p>
 
-<p>TODO message sources link list, for each also link to list of rules involving message source and this inbox</p>
+TODO <p><%= link_to 'rules affecting this inbox',rules_index_for_inbox_path(id:@inbox.id) %></p>
 
-<p>TODO link to add new message source to this inbox. default rule sends all messages to this inbox </p>
+<!-- TODO rule should be for this inbox by default -->
+<p><%= link_to 'add new rule', new_rule_path %></p>
 
 <%= link_to 'Edit', edit_inbox_path(@inbox) %> |
 <%= link_to 'Back', inboxes_path %>
