@@ -6,18 +6,21 @@ class Inbox < ActiveRecord::Base
   has_many :messages, through: :presentations
 
   def summary
-  	message = self.name + ": " + self.active_presentations.count.to_s
+  	message = self.name
   	message << " (" + self.unread_active_presentations.count.to_s + " unread)" if unread_active_presentations.count > 0
   	message
   end
 
   def active_presentations
-  	#TODO
-  	[]
+  	self.presentations
   end
 
   def unread_active_presentations
-  	#TODO
-  	[]
+  	unread_active_presentations = []
+    self.presentations.each do |p|
+      if p.message && p.message.read = false
+        unread_active_presentations << p
+      end
+    end
   end
 end
