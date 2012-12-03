@@ -12,9 +12,9 @@
 		<tr>
 			<td class="message_subject">
 				<% if m.read %>
-					<i><%= link_to m.subject,m %></i>
+					<i><%= link_to m.message_subject,m %></i>
 				<% else %>
-					<%= link_to m.subject,m  %>
+					<%= link_to m.message_subject,m  %>
 				<% end %>
 			</td>
 			<td class="message_dismiss"><%= link_to 'dismiss', Presentation.where(message_id:m.id,inbox_id:@inbox.id).first, method: :delete %></td>
