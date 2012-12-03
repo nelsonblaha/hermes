@@ -12,5 +12,17 @@
  *= require_tree .
  */
 div#logo{
-	
+	text-align:center;
+	margin-bottom:5%;
+}
+.centered{
+	margin-left:auto;
+	margin-right:auto;
+}
+div#session{
+	text-align:center;
+}
+div#navigation{
+	text-align:center;
+	margin:3%;
 }

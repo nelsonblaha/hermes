@@ -1,3 +1,5 @@
+rebuild documentation to attract development
+
 remove traits
 
 validate Message.unique to be unique within messages of its MessageSource
@@ -6,11 +8,62 @@ rule_owner_id and rule_owner_type remove 'rule' prefix
 
 figure out how to keep from passing user into MessageSource.check, self.user isn't working in there
 
+message expiration option on inbox
 
+inbox select boxes, select all, dismiss selected
 
 Twitter
+
+IMAP
+
+Reddit
+
+Evernote
+
+Some service like an online specto to track webpages in the absence of RSS
+
+Public filters and easy search to find them
+	similar to IFTTT public recipes
+	example: google alert filter pre-created to find emails that are google alerts
+
+client-inbox association (send to Glass, send to email, send to pocket, etc)
+	don't allow client inboxes to be shared? shared inboxes offer complications, not sure which exactly yet
 
 Google Reader import
 
 validate feeds after adding
 
+shared inboxes
+
+contexts and api documentation
+
+actions (send to other inbox and dismiss, for example)
+
+resolve dismiss-system-wide and dismiss-on-this-device via boolean mark on presentation ("resolve" vs "dismiss")
+
+sanitize rule logic so users can't eval anything nasty
+
+add receipt time to traits_hash for filtering
+
+extract sender context encoded into messages (example: sender location) 
+	shortlink hidden away that leads to webpage explaining what the shortlink is for, explaining what hermes is.
+
+to-do functions (calendar)
+	postpone presentations so that they reoccur at a later date
+	various kinds:
+		tasks that cannot be started until a certain date
+		tasks that can be called for early ("what can I get started on?")
+		tasks that require x hours free time to complete (designate available time on calendar)
+	allow modification of subject line (preserve old subject line intelligently)
+
+gtalk? How can message presentation be made flexible enough to work for both gchat and email?
+
+clients
+	web
+	Glass
+	pebble
+	Android
+	iOS
+	libnotify Ubuntu
+	notification center mac (supplants iOS?)
+	Google TV?

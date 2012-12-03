@@ -1,11 +1,11 @@
 <% if current_user %>
 	<div id="inbox_list">
-		<h2>Inboxes</h2>
+		<h2><%= current_user.best_name %>'s Inboxes</h2>
+		<%= link_to 'create new', new_inbox_path %>
 		<ul id="inbox_list">
 			<% current_user.inboxes.each do |inbox| %>
 				<li class="inbox_summary"><%= link_to inbox.summary, inbox %></li>
 			<% end %>
 		</ul>
-		<%= link_to 'create new inbox', new_inbox_path %>
 	</div>
 <% end %>
