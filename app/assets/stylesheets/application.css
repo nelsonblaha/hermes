@@ -15,6 +15,9 @@ div#logo{
 	text-align:center;
 	margin-bottom:5%;
 }
+.centering{
+	text-align:center;
+}
 .centered{
 	margin-left:auto;
 	margin-right:auto;
@@ -25,4 +28,7 @@ div#session{
 div#navigation{
 	text-align:center;
 	margin:3%;
+}
+div#message_basics{
+	margin-bottom:5%;
 }

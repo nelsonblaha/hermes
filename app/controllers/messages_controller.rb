@@ -16,8 +16,12 @@ class MessagesController < ApplicationController
     def show
       @message = Message.find(params[:id])
 
-      @message.read = true
-      @message.save
+      # mark message as read
+        @message.read = true
+        @message.save
+
+      # get message source
+        @source = @message.source
 
       respond_to do |format|
         format.html # show.html.erb

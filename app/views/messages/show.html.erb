@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<% eval(@message.traits_hash).each do |trait| %>
+<div id="message_basics">
+	<h3 class="centering"><%= @message.message_subject %></h3>
+	<p class="centering">from: <%= @message.sender %></p>
+	<p class="centering">source: <%= @source[0] %> (<%= @source[1] %>)</p>
+</div>
+
+<% @message.traits_for_presentation.each do |trait| %>
   <p>
     <b><%= trait[0].to_s %>:</b> 
     <%= trait[1].to_s %>
   </p>
 <% end %>
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
