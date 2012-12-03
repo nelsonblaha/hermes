@@ -6,6 +6,7 @@
 	<tr>
 		<th>Subject</th>
 		<th>Dismiss</th>
+		<th>Resolve</th>
 	</tr>
 	<% @active_messages.each do |m| %>
 		<tr>
@@ -16,8 +17,9 @@
 					<%= link_to m.subject,m  %>
 				<% end %>
 			</td>
-			<td class="message_dismiss">
-				<%= link_to 'dismiss', dismiss_message_path(id:m.id,return_url:request.fullpath) %>
+			<td class="message_dismiss"><%= link_to 'dismiss', Presentation.where(message_id:m.id,inbox_id:@inbox.id).first, method: :delete %></td>
+			<td class="message_resolve">
+				<%= link_to 'resolve', resolve_message_path(id:m.id,return_url:request.fullpath) %>
 			</td>
 		</tr>	
 	<% end %>

@@ -79,7 +79,15 @@ class PresentationsController < ApplicationController
       @presentation.destroy
 
       respond_to do |format|
-        format.html { redirect_to presentations_url }
+        #redirect to presentation inbox is needed for dismissal behavior in inbox
+        format.html do
+          if @presentation.inbox
+            #for inbox presentation-dismissal behavior
+            redirect_to @presentation.inbox
+          else
+            redirect_to presentations_path
+          end
+        end
         format.json { head :no_content }
       end
     end

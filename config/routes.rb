@@ -13,7 +13,7 @@ Hermes::Application.routes.draw do
 
 
   resources :messages
-  match '/dismiss_message' => 'messages#dismiss'
+  match '/resolve_message' => 'messages#resolve'
 
   resources :rss_feeds
 

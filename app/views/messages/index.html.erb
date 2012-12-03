@@ -5,7 +5,6 @@
     <th>Message source</th>
     <th>Message source type</th>
     <th>Read</th>
-    <th>Dismissed</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,7 +15,6 @@
     <td><%= message.message_source_id %></td>
     <td><%= message.message_source_type %></td>
     <td><%= message.read %></td>
-    <td><%= message.dismissed %></td>
     <td><%= link_to 'Show', message %></td>
     <td><%= link_to 'Edit', edit_message_path(message) %></td>
     <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>

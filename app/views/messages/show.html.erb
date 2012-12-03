@@ -6,16 +6,6 @@
     <%= trait[1].to_s %>
   </p>
 <% end %>
-<p>
-  <b>Read:</b>
-  <%= @message.read %>
-</p>
-
-<p>
-  <b>Dismissed:</b>
-  <%= @message.dismissed %>
-</p>
-
 
 <%= link_to 'Edit', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>

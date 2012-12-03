@@ -18,7 +18,7 @@ class Inbox < ActiveRecord::Base
   def unread_active_presentations
   	unread_active = []
     self.presentations.each do |p|
-      if p.message && !p.rule && !p.message.read && !p.message.dismissed
+      if p.message && !p.rule && !p.message.read && !p.message.resolved
         unread_active << p
       end
     end

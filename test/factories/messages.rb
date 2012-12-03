@@ -6,7 +6,7 @@ FactoryGirl.define do
     message_source_id 1
     message_source_type "RssFeed"
     read false
-    dismissed false
+    resolved false
     sequence(:unique_identifier)
   end
 end

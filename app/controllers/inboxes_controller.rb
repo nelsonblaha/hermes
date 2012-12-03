@@ -18,7 +18,7 @@ class InboxesController < ApplicationController
     #TODO optimize
     @active_messages = []
     @inbox.messages.each do |m|
-      @active_messages << m if !m.dismissed
+      @active_messages << m if !m.resolved
     end
 
     respond_to do |format|

@@ -85,11 +85,11 @@ class MessagesController < ApplicationController
       end
     end
 
-  def dismiss
+  def resolve
     @message = Message.find(params[:id])
     return_url = params[:return_url]
 
-    @message.dismissed = true
+    @message.resolved = true
     @message.save
 
     redirect_to return_url

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202224209) do
+ActiveRecord::Schema.define(:version => 20121203045749) do
 
   create_table "inboxes", :force => true do |t|
     t.string   "name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20121202224209) do
     t.integer  "message_source_id"
     t.string   "message_source_type"
     t.boolean  "read"
-    t.boolean  "dismissed"
+    t.boolean  "resolved"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "unique_identifier"
