@@ -1,21 +1,23 @@
+Hermes is my response to the changes that I expect to come with wearable technology over the next few years. I believe that the way we handle messaging today is not designed for an environment with several screens, nor does it properly take into account contextual information when deciding when and how to present messages.
+
 Objectives
 
-  -Deliver messages when they are relevant, according to user preferences and RESTfully provided contexts.
+  -Deliver messages when they are relevant, according to user preferences and externally-determined contexts.
   -Coordinate message delivery across devices to avoid redundancy.
 
-Message delivery behavior is based on rules that act on context:
+Message delivery behavior is based on rules that act on traditional filter contexts:
 
   -Sender of message
   -Time received
-  -Traditional text filters
+  -Text filters
   -Originating service (e.g. Twitter, Gmail, Reddit, Facebook, Google Voice, XMPP/Jabber)
 
-Optional third-party services will use a RESTful API to supply additional context. Hermes could consider the following when determining how to present messages:
+Third-party services will use a RESTful API to supply additional context. Hermes could conceivably consider the following when determining how to present messages:
   
   -"Is user wearing Google Glass?"
-  -"Where is user? Is he in one of the zones he defined?"
+  -"Where is user? Work? Home?"
   -"Where is user located relative to others? Is he face-to-face with anyone? Is his microphone indicating an ongoing conversation we should avoid interrupting?"
-  -"What browser tab is user active in? Is he studying and not to be distracted by low-priority messages?"
+  -"What browser tab is user active in, and what kind of activity does it suggest? Is he studying and not to be distracted by low-priority messages?"
   -"Is user currently riding a bicycle?"
   -"Is user walking?"
   -"What events are occurring right now on user's calendar?"
@@ -25,33 +27,26 @@ Arbitrary contexts may be added to messages by the sender, and the recipiant may
   
   -Sender's location
   -Priority or urgency
-  -Privacy (so clients can avoid displaying messages where others might see, or require a password to open)
 
-These contexts will be made available to third-party context services for maximum utility.
-
-A sender could conceivably include credentials to access their location for a limited time, so that a third-party context service could see the current location of the sender when opening the message.
+These contexts will be made available to third-party context services as well. A sender could, for example, include credentials to access their location for a limited time.
 
 Syncs messages' read-unread status across multiple clients, such as:
 
   -Web client
-  -Browser extension (thus on any desktop/notebook)
-  -Google Glass
-  -Android notification area (phone and tablet synced)
-  -iOS
+  -Browser extension
+  -Google Glass, Pebble, other wearables
+  -Android/iOS
   -TV
-  -Pebble
-
-Synchronization will mitigate today's problem of separately-dismissed notices in Android notification areas, for example.
 
 Clients such as televisions or cars could easily be made to handle messages for multiple users simultaneously
 
 Rules generate one or more presentations for the messages, typically one of three archetypes:
 
   -Blip: momentary "pop-up" with variable display length. Optional explicit-dismissal requirement.
-  -Inbox item: user defines an unlimited number of inboxes, which require explicit dismissal of messages. (work, todo, podcasts, video)
-  -Stream: like an inbox, but without explicit dismissal. Useful for combining low-priority leisure feeds such as Reddit, Google+, Facebook. User should not see the same item twice. Items could be made to expire eventually.
+  -Inbox item: user defines an unlimited number of inboxes, which require explicit dismissal of messages. (work, todo, leisure reading)
+  -Stream: like an inbox, but without explicit dismissal. Useful for combining low-priority leisure feeds such as Reddit, Google+, Facebook. User can dismiss items to ensure that the feed is not repetitive. Items could be made to expire after some specified period.
 
-On the backend, these are represented by simple Presentation and Inbox objects, differentiated by Inbox attributes that define behavior.
+On the backend, these are really simple Presentation and Inbox objects, differentiated only by Inbox attributes that define their behavior.
 
 Clients may offer the user the chance to perform Actions in response to Presentations:
 
@@ -59,7 +54,7 @@ Clients may offer the user the chance to perform Actions in response to Presenta
   -Send to inbox for later action (yields menu of inboxes)
   -Share with Person (menu of People and their contact methods)
   -Share with Service (menu of social network services)
-  -Third-party RESTful actions user has opted-in to
+  -Third-party RESTful actions user has added
 
 Presentations may carry with them instructions to the client to display certain response actions. ("Make this a to-do item". "Share this on all social networks".)
 
