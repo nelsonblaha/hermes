@@ -1,4 +1,4 @@
-rebuild documentation to attract development
+set up default inbox and rule for RSS
 
 remove traits
 

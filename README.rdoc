@@ -80,6 +80,8 @@ Here's what needs doing:
 
 * Rails devs to write in new sources of messages (I've written RSS via @PaulDix's Feedzirra, Twitter is next on my list via Omniauth)
 
-* AJAX on the front end for a prettier web client
+* AJAX on the front end for a prettier web client and easier rule creation.
 
 * Most challenging for me, Hermes as it's written now needs a very tricky ruby sanitizer. I've decided to use Ruby to represent message-processing logic... Ruby that's written by the user. It allows Hermes to have incredible flexibility, but is extremely insecure. The user cannot be allowed to write raw ruby that's evaluated, so something that converts the permitted (and layman-friendly) syntax to safe Ruby is needed.
+
+See mechanics.txt for an explanation of Hermes' inner workings, to get started.
