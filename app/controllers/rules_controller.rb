@@ -87,14 +87,11 @@ class RulesController < ApplicationController
     end
 
   def rules_index_for_inbox
-    inbox = Inbox.find(params[:id])
-    @title = "rules affecting inbox: "+inbox.name
+    @inbox = Inbox.find(params[:id])
     @rules = []
     #TODO optimize
-    Presentation.where('rule_id IS NOT NULL AND inbox_id = ?',inbox.id).each do |p|
+    Presentation.where('rule_id IS NOT NULL AND inbox_id = ?',@inbox.id).each do |p|
       @rules << p.rule
     end
-
-    render 'rules/index'
   end
 end
