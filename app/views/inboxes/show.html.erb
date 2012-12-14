@@ -2,30 +2,34 @@
 
 <h1>inbox: <%= @inbox.name %></h1>
 
-<table>
-	<tr>
-		<th>Subject</th>
-		<th>Dismiss</th>
-		<th>Resolve</th>
-	</tr>
-	<% @active_messages.each do |m| %>
+<% if @active_messages.empty? %>
+	<p><i>no messages</i></p>
+<% else %>
+	<table>
 		<tr>
-			<td class="message_subject">
-				<% if m.read %>
-					<i><%= link_to m.message_subject,m %></i>
-				<% else %>
-					<%= link_to m.message_subject,m  %>
-				<% end %>
-			</td>
-			<td class="message_dismiss"><%= link_to 'dismiss', Presentation.where(message_id:m.id,inbox_id:@inbox.id).first, method: :delete %></td>
-			<td class="message_resolve">
-				<%= link_to 'resolve', resolve_message_path(id:m.id,return_url:request.fullpath) %>
-			</td>
-		</tr>	
-	<% end %>
-</table>
+			<th>Subject</th>
+			<th>Dismiss</th>
+			<th>Resolve</th>
+		</tr>
+		<% @active_messages.each do |m| %>
+			<tr>
+				<td class="message_subject">
+					<% if m.read %>
+						<i><%= link_to m.message_subject,m %></i>
+					<% else %>
+						<%= link_to m.message_subject,m  %>
+					<% end %>
+				</td>
+				<td class="message_dismiss"><%= link_to 'dismiss', Presentation.where(message_id:m.id,inbox_id:@inbox.id).first, method: :delete %></td>
+				<td class="message_resolve">
+					<%= link_to 'resolve', resolve_message_path(id:m.id,return_url:request.fullpath) %>
+				</td>
+			</tr>	
+		<% end %>
+	</table>
 
-<p><i>end of messages</i></p>
+	<p><i>end of messages</i></p>
+<% end %>
 
 <p><%= link_to 'rules affecting this inbox',rules_index_for_inbox_path(id:@inbox.id) %></p>
 
