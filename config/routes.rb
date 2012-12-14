@@ -4,10 +4,10 @@ Hermes::Application.routes.draw do
   get "message_source/mine", as: 'my_message_sources'
 
   resources :presentations
-  match "/presentations_index_for_rule" => "presentations#presentations_index_for_rule"
+  match "/presentations_index_for_rule" => "presentations#index_for_rule"
 
   resources :rules
-  match "/rules_index_for_inbox" => "rules#rules_index_for_inbox"
+  match "/rules_index_for_inbox" => "rules#index_for_inbox"
 
   resources :traits
 

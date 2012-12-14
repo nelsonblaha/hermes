@@ -86,7 +86,7 @@ class RulesController < ApplicationController
       end
     end
 
-  def rules_index_for_inbox
+  def index_for_inbox
     @inbox = Inbox.find(params[:id])
     @rules = []
     #TODO optimize

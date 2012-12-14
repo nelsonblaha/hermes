@@ -92,7 +92,7 @@ class PresentationsController < ApplicationController
       end
     end
 
-  def presentations_index_for_rule
+  def index_for_rule
     rule = Rule.find(params[:id])
     @title = "presentations caused by rule: "+rule.name
     @presentations = rule.presentations
