@@ -19,7 +19,7 @@ Hermes::Application.routes.draw do
 
 
   resources :inboxes
-
+  match '/inbox_resolve_all_messages' => 'inboxes#resolve_all_messages'
 
   devise_for :users
 

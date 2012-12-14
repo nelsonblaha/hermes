@@ -5,45 +5,57 @@ class InboxesControllerTest < ActionController::TestCase
     @inbox = create(:inbox)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:inboxes)
-  end
+  # scaffolding tests
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create inbox" do
-    assert_difference('Inbox.count') do
-      post :create, inbox: attributes_for(:inbox)
+    test "should get index" do
+      get :index
+      assert_response :success
+      assert_not_nil assigns(:inboxes)
     end
 
-    assert_redirected_to root_url
-  end
-
-  test "should show inbox" do
-    get :show, id: @inbox
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @inbox
-    assert_response :success
-  end
-
-  test "should update inbox" do
-    put :update, id: @inbox, inbox: attributes_for(:inbox)
-    assert_redirected_to root_url
-  end
-
-  test "should destroy inbox" do
-    assert_difference('Inbox.count', -1) do
-      delete :destroy, id: @inbox
+    test "should get new" do
+      get :new
+      assert_response :success
     end
 
-    assert_redirected_to root_url
+    test "should create inbox" do
+      assert_difference('Inbox.count') do
+        post :create, inbox: attributes_for(:inbox)
+      end
+
+      assert_redirected_to root_url
+    end
+
+    test "should show inbox" do
+      get :show, id: @inbox
+      assert_response :success
+    end
+
+    test "should get edit" do
+      get :edit, id: @inbox
+      assert_response :success
+    end
+
+    test "should update inbox" do
+      put :update, id: @inbox, inbox: attributes_for(:inbox)
+      assert_redirected_to root_url
+    end
+
+    test "should destroy inbox" do
+      assert_difference('Inbox.count', -1) do
+        delete :destroy, id: @inbox
+      end
+
+      assert_redirected_to root_url
+    end
+
+  test "should resolve all messages in inbox" do 
+    @message = create(:message)
+    create(:presentation,message_id:@message.id,inbox_id:@inbox.id)
+    get :resolve_all_messages, id: @inbox
+    assert_equal 0, @inbox.presentations.count
+    assert_equal 0, @inbox.messages.count
+    assert_redirected_to @inbox
   end
+
 end

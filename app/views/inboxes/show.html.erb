@@ -7,6 +7,11 @@
 <% else %>
 	<table>
 		<tr>
+			<th></th>
+			<th><%= link_to 'Dismiss All', Presentation.where(inbox_id:@inbox.id).first, method: :delete %></th>
+			<th><%= link_to 'Resolve All', inbox_resolve_all_messages_path(id:@inbox.id) %></th>
+		</tr>
+		<tr>
 			<th>Subject</th>
 			<th>Dismiss</th>
 			<th>Resolve</th>
