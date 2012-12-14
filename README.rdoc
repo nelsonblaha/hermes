@@ -1,3 +1,5 @@
+https://travis-ci.org/nelsonblaha/hermes.png
+
 Hermes is a response to the changes in messaging and notifications likely to come with wearable technology over the next few years. The way we handle messaging today is not designed for an environment with several screens, nor does it properly take into account contextual information when deciding when and how to present messages.
 
 Objectives
