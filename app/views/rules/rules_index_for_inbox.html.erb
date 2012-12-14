@@ -12,7 +12,7 @@
 <% @rules.each do |rule| %>
   <tr>
     <td><%= rule.name %></td>
-    <td><%= rule.logic %></td>
+    <td>"<%= rule.logic %>"</td>
     <td><%= link_to 'Show', rule %></td>
     <td><%= link_to 'Edit', edit_rule_path(rule) %></td>
     <td><%= link_to 'Destroy', rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
