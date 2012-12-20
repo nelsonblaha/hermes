@@ -1,4 +1,6 @@
-set up default inbox and rule for RSS
+20121214 was setting up an ajax link in inbox/show that causes the inbox to be refreshed via the MessageSource#check method
+
+set up default inbox and rule for RSS-
 
 remove traits
 

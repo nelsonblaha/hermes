@@ -1,7 +1,9 @@
 Hermes::Application.routes.draw do
   
-  get "message_source/directory", as: 'message_source_directory'
-  get "message_source/mine", as: 'my_message_sources'
+  # message sources
+    get "message_source/directory", as: 'message_source_directory'
+    get "message_source/mine", as: 'my_message_sources'
+    post "message_sources/:message_id/check"
 
   resources :presentations
   match "/presentations_index_for_rule" => "presentations#index_for_rule"

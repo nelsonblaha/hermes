@@ -2,6 +2,8 @@
 
 <h1>inbox: <%= @inbox.name %></h1>
 
+<!-- TODO ajax link to: post "message_sources/:message_id/check" -->
+
 <% if @active_messages.empty? %>
 	<p><i>no messages</i></p>
 <% else %>
