@@ -51,9 +51,19 @@ class InboxesControllerTest < ActionController::TestCase
 
   test "should resolve all messages in inbox" do 
     @message = create(:message)
+    @rule = create(:rule)
+    
+    # create a presentation to be resolved
     create(:presentation,message_id:@message.id,inbox_id:@inbox.id)
+
+    # create the template presentation
+    create(:presentation,rule_id:@rule.id,inbox_id:@inbox.id)
+
+    # resolve all messages for inbox
     get :resolve_all_messages, id: @inbox
-    assert_equal 0, @inbox.presentations.count
+    
+    #assert that only the template presentation remains
+    assert_equal 1, @inbox.presentations.count
     assert_equal 0, @inbox.messages.count
     assert_redirected_to @inbox
   end

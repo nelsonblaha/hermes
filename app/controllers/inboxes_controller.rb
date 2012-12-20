@@ -99,7 +99,7 @@ class InboxesController < ApplicationController
       message.save
     end 
 
-    @inbox.presentations.destroy_all
+    @inbox.presentations.where(rule_id:nil).destroy_all
 
     redirect_to @inbox
   end
