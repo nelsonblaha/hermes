@@ -16,10 +16,25 @@ class RssFeedsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create rss_feed" do
+  test "should create rss_feed and template if template not present" do
+    assert_equal 0, Inbox.count
+    assert_equal 0, Presentation.count
+    assert_equal 0, Rule.count
+
     assert_difference('RssFeed.count') do
       post :create, rss_feed: attributes_for(:rss_feed)
     end
+
+    #creation of template inbox, rule, presentation since no template inbox existed
+    assert_equal 1, Inbox.count
+    assert_equal 1, Presentation.count
+    assert_equal 1, Rule.count
+
+    #assocation with existing template inbox when one exists
+    create(:rss_feed)
+    assert_equal 1, Inbox.count
+    assert_equal 2, Presentation.count
+    assert_equal 2, Rule.count
 
     assert_redirected_to rss_feed_path(assigns(:rss_feed))
   end
