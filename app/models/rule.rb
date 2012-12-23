@@ -1,7 +1,7 @@
 class Rule < ActiveRecord::Base
-  attr_accessible :limit, :meta_or_mode, :meta_rule_id, :mode, :name, :rule_owner_id, :rule_owner_type, :logic
+  attr_accessible :limit, :meta_or_mode, :meta_rule_id, :mode, :name, :user_id, :logic
 
-  belongs_to :user, polymorphic:true
+  belongs_to :user
   has_many :presentations
 
  	def process(message)

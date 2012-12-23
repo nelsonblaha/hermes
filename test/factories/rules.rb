@@ -2,9 +2,8 @@
 
 FactoryGirl.define do
   factory :rule do
-    rule_owner_id 1
-    rule_owner_type "user"
+    user_id 1
     name "MyRule"
-    logic ""
+    logic "false"
   end
 end

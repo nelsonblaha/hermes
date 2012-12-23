@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :inboxes
   has_many :rss_feeds, as: :message_sources
-  has_many :rules, as: :rule_owner
+  has_many :rules
 
   def best_name
     name = self.email.scan(/(.*?)@/).first.first.downcase.titleize

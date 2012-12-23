@@ -23,6 +23,8 @@ class RulesControllerTest < ActionController::TestCase
         post :create, rule: attributes_for(:rule)
       end
 
+      assert_equal Rule.last.user, @default
+
       assert_redirected_to rule_path(assigns(:rule))
     end
 

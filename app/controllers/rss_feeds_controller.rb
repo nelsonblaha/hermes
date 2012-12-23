@@ -41,9 +41,8 @@ class RssFeedsController < ApplicationController
   # POST /rss_feeds.json
   def create
     @rss_feed = RssFeed.new(params[:rss_feed])
-    @rss_feed.user_id = current_user.id
-    
-    end
+    @rss_feed.user = current_user
+
     respond_to do |format|
       if @rss_feed.save
         format.html { redirect_to @rss_feed, notice: 'Rss feed was successfully created.' }
