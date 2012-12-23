@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223012224) do
+ActiveRecord::Schema.define(:version => 20121223070226) do
 
   create_table "inboxes", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20121223012224) do
     t.datetime "updated_at", :null => false
     t.text     "logic"
     t.integer  "user_id"
+    t.integer  "super_rule"
+    t.integer  "super_mode"
   end
 
   create_table "traits", :force => true do |t|

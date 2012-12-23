@@ -3,20 +3,48 @@ class Rule < ActiveRecord::Base
 
   belongs_to :user
   has_many :presentations
+  has_many :traits, as: :traited
 
- 	def process(message)
- 		#create logic filter
-	 		filter = self.logic
-	 		eval(message.traits_hash).each do |trait|
-	 			filter.gsub!(trait[0].to_s,"'"+trait[1].to_s+"'")
-	 		end
-	 	#create context filter
-	 	
-	 		if eval(filter.to_s)
-	 			self.presentations.each do |presentation|
-	 				Presentation.create(inbox_id:presentation.inbox_id,message_id:message.id)
-	 			end
-	 			true
-	 		end
+  	def process(message)
+  		if self.any_trait_matches(message)
+  			self.apply_presentations_to(message)
+  		end
+  	end
+
+  	def apply_presentations_to(message)
+  		self.presentations.each do |presentation|
+ 			Presentation.create(inbox_id:presentation.inbox_id,message_id:message.id)
+ 		end
+  	end
+
+ 	def any_trait_matches(message)
+ 		#TODO could be much more efficient
+ 		pass = false
+
+ 		self.traits.each do |rule_trait|
+ 			message.traits.each do |message_trait|
+ 				if rule_trait.name == message_trait.name && rule_trait.value == message_trait.value
+ 					pass = true
+ 				end
+ 		end
+
+ 		return pass
  	end
+
+ 	def super_string
+ 		case self.super_mode
+ 			when nil
+ 				'not a super_rule'
+ 			when 0
+ 				'all meta_rule'
+ 			when 2
+ 				'any two rule'
+ 			when 3
+ 				'any three rule'
+ 			else
+ 				'any n rule'
+ 			end
+ 		end
+ 	end
+
 end

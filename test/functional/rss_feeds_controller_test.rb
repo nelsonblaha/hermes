@@ -36,6 +36,16 @@ class RssFeedsControllerTest < ActionController::TestCase
     assert_equal 2, Presentation.count
     assert_equal 2, Rule.count
 
+    # a message from the latest rss feed goes into the news inbox
+    assert_difference('Inbox.first.messages.count') do
+      Message.create(message_source:create(:rss_feed))
+    end
+
+    # messages from other message sources do not go into the news inbox
+    assert_no_difference('Inbox.first.messages.count') do
+      
+    end
+
     assert_redirected_to rss_feed_path(assigns(:rss_feed))
   end
 
