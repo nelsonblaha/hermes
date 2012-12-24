@@ -13,6 +13,8 @@ class RssFeed < ActiveRecord::Base
 
   def default_present_to_news_inbox_template
     news = Inbox.where(template:'news',user_id:self.user.id).first_or_create
+    news.name ||= "News"
+    news.save
     rule = Rule.create(user_id:self.user_id)
     trait = rule.traits.create(name:'message_source_id',value:self.id.to_s)
     trait = rule.traits.create(name:'message_source_type',value:'rss_feed')
