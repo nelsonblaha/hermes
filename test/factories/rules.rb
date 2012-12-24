@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :rule do
-    user_id 1
+    association :user
     name "MyRule"
-    logic "false"
   end
 end

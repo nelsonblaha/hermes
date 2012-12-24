@@ -43,17 +43,6 @@ class RssFeedsController < ApplicationController
     @rss_feed = RssFeed.new(params[:rss_feed])
     @rss_feed.user = current_user
     
-    news_inbox = Inbox.where(template:"news").first_or_create
-
-    unless news_inbox.name
-      news_inbox.name = "News" 
-      news_inbox.save
-    end
-
-    # rule directing this rss feed's messages to the 'news' inbox by default
-    news_rule = Rule.create(logic:"service == "+@rss_feed.id.to_s)
-    Presentation.create(rule_id:news_rule.id,inbox_id:news_inbox.id)
-   
     respond_to do |format|
       if @rss_feed.save
         format.html { redirect_to @rss_feed, notice: 'Rss feed was successfully created.' }

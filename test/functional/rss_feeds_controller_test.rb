@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class RssFeedsControllerTest < ActionController::TestCase
+  
   setup do
     @rss_feed = create(:rss_feed)
   end
@@ -16,10 +17,15 @@ class RssFeedsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create rss_feed and template if template not present" do
-    assert_equal 0, Inbox.count
-    assert_equal 0, Presentation.count
-    assert_equal 0, Rule.count
+  test "create: inbox serving 'news' function is ensured for new rss_feeds to have default structure with" do
+    #TODO attempt to use multiple-expression assert_difference to simplify
+    #Reset database
+      Inbox.destroy_all
+      Presentation.destroy_all
+      Rule.destroy_all
+      assert_equal 0, Inbox.count
+      assert_equal 0, Presentation.count
+      assert_equal 0, Rule.count
 
     assert_difference('RssFeed.count') do
       post :create, rss_feed: attributes_for(:rss_feed)
@@ -35,16 +41,6 @@ class RssFeedsControllerTest < ActionController::TestCase
     assert_equal 1, Inbox.count
     assert_equal 2, Presentation.count
     assert_equal 2, Rule.count
-
-    # a message from the latest rss feed goes into the news inbox
-    assert_difference('Inbox.first.messages.count') do
-      Message.create(message_source:create(:rss_feed))
-    end
-
-    # messages from other message sources do not go into the news inbox
-    assert_no_difference('Inbox.first.messages.count') do
-      
-    end
 
     assert_redirected_to rss_feed_path(assigns(:rss_feed))
   end
@@ -71,4 +67,5 @@ class RssFeedsControllerTest < ActionController::TestCase
 
     assert_redirected_to rss_feeds_path
   end
+
 end

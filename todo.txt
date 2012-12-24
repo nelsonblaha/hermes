@@ -1,6 +1,5 @@
-TESTS FIRST
-bug: Run rules on message as an after_create filter instead of in MessageSource#check. Don't pass current_user, instead use the message's owning user
-bug: use Traits instead of traits_hash string on message
+bug: ensure exhaustive test for each method
+
 bug: add 'service:' hash when message is created
 
 contexts and api documentation

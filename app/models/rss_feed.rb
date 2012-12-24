@@ -7,6 +7,16 @@ class RssFeed < ActiveRecord::Base
   belongs_to :user
   has_many :messages, as: :message_source
 
+  after_create :default_present_to_news_inbox_template
+
+  def default_present_to_news_inbox_template
+    news = Inbox.where(template:'news').first_or_create
+    rule = Rule.create(user_id:self.user_id)
+    trait = rule.traits.create(name:'message_source_id',value:self.id.to_s)
+    trait = rule.traits.create(name:'message_source_type',value:'rss_feed')
+    presentation = rule.presentations.create(inbox_id:news.id)
+  end
+
   def new_messages
     new_messages = []
     Feedzirra::Feed.fetch_and_parse(self.url).entries.each do |entry|
@@ -20,8 +30,13 @@ class RssFeed < ActiveRecord::Base
           message.save
         end
         new_messages << message
+        message.traits.create(name:'message_source_id',value:self.id.to_s)
       end
     end
     return new_messages
+  end
+
+  def common_name
+    "RSS Feed"
   end
 end

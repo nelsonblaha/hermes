@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <div id="message_basics">
-	<h3 class="centering"><%= @message.message_subject %></h3>
-	<p class="centering">from: <%= @message.sender %></p>
-	<p class="centering">source: <%= @source[0] %> (<%= @source[1] %>)</p>
+	<!-- TODO programmatic display of message traits based on intelligently-defaulting template attached to presentation, rather than markup for each static trait as done below: -->
+	<h3 class="centering"><%= @message.value('subject') %></h3>
+	<p class="centering">from: <%= @message.value('sender') %></p>
+	<% if @message.message_source %>
+		<p class="centering">source: <%= @message.message_source.name %> (<%= @message.message_source.common_name %>)</p>
+	<% end %>
 </div>
-
-<% @message.traits_for_presentation.each do |trait| %>
-  <p>
-    <b><%= trait[0].to_s %>:</b> 
-    <%= trait[1].to_s %>
-  </p>
-<% end %>

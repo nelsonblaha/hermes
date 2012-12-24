@@ -8,5 +8,10 @@ FactoryGirl.define do
     read false
     resolved false
     sequence(:unique_identifier)
+    factory :green_message do
+    	after(:create) do |m|
+    		m.traits.create(name:'color',value:'green')
+    	end		
+    end
   end
 end

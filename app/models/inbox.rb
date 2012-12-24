@@ -1,5 +1,5 @@
 class Inbox < ActiveRecord::Base
-  attr_accessible :message_expiration_seconds, :messages_expire, :name, :user_id
+  attr_accessible :message_expiration_seconds, :messages_expire, :name, :user_id, :template
 
   belongs_to :user
   has_many :presentations

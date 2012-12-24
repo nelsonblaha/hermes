@@ -6,43 +6,34 @@ class Message < ActiveRecord::Base
   has_many :presentations, dependent: :destroy
   has_many :inboxes, through: :presentations
 
-  def message_subject
-  	#TODO cleverly figure out message's subject by iterating through possible subject hash keys such as 'title','subject',etc  		
-  	if title = message_hash['title']
-  		title
-  	else 
-  		"unknown subject"
-  	end
-  end
-  
-  def message_hash
-    eval(self.traits_hash)
-  end
+  after_create :distribute
 
-  def source
-    if message_source && message_source.name
-      source_name = message_source.name
-    else
-      source_name = ""
-    end
-    [source_name,message_hash['message_source_type']]
-  end
-
-  def traits_for_presentation
-    traits = []
-    #traits being sucked into alternate metadata presentations
-    traits_to_remove = ['message_source_type','message_source_id','author']
-    message_hash.each do |trait|
-      remove = false
-      traits_to_remove.each do |removeit|
-        remove = true if trait[0] == removeit
+  def distribute
+    if self.message_source && self.message_source.user
+      self.message_source.user.rules.each do |rule|
+        rule.process(self)
       end
-      traits << trait unless remove
     end
-    traits
   end
 
-  def sender
-    message_hash['author'] || "unknown sender"
+  def value(name)
+  	case name
+		when 'message_source_id'
+			self.message_source_id
+		when 'message_source_type'
+			self.message_source_type
+		when 'hermes_received_time'
+			self.created_at.to_s
+		when 'read'
+			self.read
+		when 'resolved'
+			self.resolved
+    else
+      if trait = self.traits.where(name:name).first
+        return self.traits.where(name:name).first.value
+      else
+        return nil
+      end
+    end
   end
 end
