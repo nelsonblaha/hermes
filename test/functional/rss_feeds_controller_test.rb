@@ -38,7 +38,7 @@ class RssFeedsControllerTest < ActionController::TestCase
 
     #assocation with existing template inbox when one exists
     create(:rss_feed)
-    assert_equal 1, Inbox.count
+    assert_equal 2, Inbox.count
     assert_equal 2, Presentation.count
     assert_equal 2, Rule.count
 

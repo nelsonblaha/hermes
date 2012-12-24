@@ -9,8 +9,10 @@ class RssFeed < ActiveRecord::Base
 
   after_create :default_present_to_news_inbox_template
 
+  validates :user, presence: true
+
   def default_present_to_news_inbox_template
-    news = Inbox.where(template:'news').first_or_create
+    news = Inbox.where(template:'news',user_id:self.user.id).first_or_create
     rule = Rule.create(user_id:self.user_id)
     trait = rule.traits.create(name:'message_source_id',value:self.id.to_s)
     trait = rule.traits.create(name:'message_source_type',value:'rss_feed')
