@@ -26,7 +26,7 @@ class Rule < ActiveRecord::Base
       end
       
       #pass if enough are met. If needed_to_pass is 0, pass if all passed
-      if ((satisfied > self.passing_children_needed_to_pass ) && (self.passing_children_needed_to_pass > 0)) || (self.passing_children_needed_to_pass == 0 && all_passed == true)
+      if ((satisfied >= self.passing_children_needed_to_pass ) && (self.passing_children_needed_to_pass > 0)) || (self.passing_children_needed_to_pass == 0 && all_passed == true)
         return true
       elsif at_least_one_fail == true
         return false
