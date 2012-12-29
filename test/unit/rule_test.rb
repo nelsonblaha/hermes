@@ -27,8 +27,9 @@ class RuleTest < ActiveSupport::TestCase
 			pass_rule.stubs(:pass?).returns(true)
 
 			#failing child rule
-			fail_rule = create(:rule,parent_rule_id:parent.id)
-			fail_rule.stubs(:pass?).returns(false)
+			fail_rule = create(:rule,parent_rule_id:parent.id,passing_traits_needed_to_pass:1)
+			#TODO not working - I set passing_traits_needed_to_pass above instead to ensure failure
+				fail_rule.stubs(:pass?).returns(false)
 			fail_rule.traits.create(name:"fail",value:"me")
 
 			#TODO assert_false?
@@ -55,8 +56,9 @@ class RuleTest < ActiveSupport::TestCase
 
 			#failing child rules
 			2.times do
-				fail_rule = create(:rule,parent_rule_id:parent.id)
-				fail_rule.stubs(:pass?).returns(false)
+				fail_rule = create(:rule,parent_rule_id:parent.id, passing_traits_needed_to_pass:1)
+				#TODO this is not working, so I set passing_traits_needed above to ensure failure
+					fail_rule.stubs(:pass?).returns(false)
 				fail_rule.traits.create(name:"fail",value:"me")
 			end
 

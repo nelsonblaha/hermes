@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224030131) do
+ActiveRecord::Schema.define(:version => 20121224010548) do
 
   create_table "inboxes", :force => true do |t|
     t.string   "name"
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(:version => 20121224030131) do
 
   create_table "rules", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "user_id"
     t.integer  "parent_rule_id"
     t.integer  "passing_children_needed_to_pass"
-    t.integer  "passing_traits_needed_to_pass",   :default => 0
+    t.integer  "passing_traits_needed_to_pass"
   end
 
   create_table "traits", :force => true do |t|
