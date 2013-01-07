@@ -104,4 +104,10 @@ class InboxesController < ApplicationController
     redirect_to @inbox
   end
 
+  def check_for_messages
+    @inbox = Inbox.find(params[:id])
+
+    @inbox.user.message_sources
+  end
+
 end

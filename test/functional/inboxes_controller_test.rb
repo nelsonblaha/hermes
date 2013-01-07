@@ -68,4 +68,24 @@ class InboxesControllerTest < ActionController::TestCase
     assert_redirected_to @inbox
   end
 
+  test "should check inbox for messages" do
+    #default test user owns inbox
+      @inbox.user_id = @default.id
+      @inbox.save
+
+    #default test user owns rss feed
+      rss = create(:rss_feed,user_id:@default.id)
+
+    #rule matching rss' messages
+      rule = create(:rule,user_id:@default.id)
+      trait = create(:trait,traited_id:rule.id,traited_type:'rule',name:'foo',value:'bar')
+
+    #presentation sending rule's messages to @inbox
+      create(:presentation,inbox_id:@inbox.id,rule_id:rule.id)
+
+    assert_difference('@inbox.messages.count') do
+      rss.check(@default)
+    end
+  end
+
 end

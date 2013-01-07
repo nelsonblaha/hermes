@@ -20,15 +20,3 @@ to-do functions (calendar)
 		tasks that can be called for early ("what can I get started on?")
 		tasks that require x hours free time to complete (designate available time on calendar)
 	allow modification of subject line (preserve old subject line intelligently)
-
-gtalk? How can message presentation be made flexible enough to work for both gchat and email?
-
-clients
-	web
-	Glass
-	pebble
-	Android
-	iOS
-	libnotify Ubuntu
-	notification center mac (supplants iOS?)
-	Google TV?

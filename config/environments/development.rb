@@ -34,4 +34,7 @@ Hermes::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #to aid developers, new users should be authorized by default in development environment only
+  AUTHORIZE_NEW_USERS = true
 end
