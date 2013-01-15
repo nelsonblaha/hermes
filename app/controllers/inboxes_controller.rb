@@ -106,7 +106,8 @@ class InboxesController < ApplicationController
 
   def check_for_messages
     @inbox = Inbox.find(params[:id])
-    @inbox.check
+    new_messages = @inbox.check
+    redirect_to @inbox, notice: new_messages.to_s+" new messages retrieved for this inbox."
   end
 
 end

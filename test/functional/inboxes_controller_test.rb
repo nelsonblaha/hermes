@@ -89,6 +89,7 @@ class InboxesControllerTest < ActionController::TestCase
 
     assert_difference('@inbox.messages.count') do
       get :check_for_messages, id: @inbox
+      #TODO expects correct number of messages in notice
     end
   end
 
