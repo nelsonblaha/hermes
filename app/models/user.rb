@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :inboxes
-  has_many :rss_feeds, as: :message_sources
+  has_many :rss_feeds
   has_many :rules
 
   after_create :authorize

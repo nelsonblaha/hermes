@@ -101,4 +101,6 @@ class RuleTest < ActiveSupport::TestCase
 		test 'pass?: fail rule that has a failing trait' do
 			#TODO
 		end
+
+	
 end 

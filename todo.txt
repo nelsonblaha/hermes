@@ -1,3 +1,5 @@
+generate origin traits upon creation of messages
+
 bug: ensure exhaustive test for each method
 
 bug: add 'service:' hash when message is created

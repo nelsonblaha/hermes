@@ -24,4 +24,10 @@ class Inbox < ActiveRecord::Base
     end
     unread_active
   end
+
+  def check
+    self.user.rss_feeds.each do |source|
+      source.check(self.user)
+    end
+  end
 end

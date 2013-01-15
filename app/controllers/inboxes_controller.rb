@@ -106,7 +106,6 @@ class InboxesController < ApplicationController
 
   def check_for_messages
     @inbox = Inbox.find(params[:id])
-
     @inbox.user.message_sources
   end
 
