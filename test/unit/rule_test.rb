@@ -102,5 +102,16 @@ class RuleTest < ActiveSupport::TestCase
 			#TODO
 		end
 
+	test "apply_presentations_to" do
+		rule = create(:rule)
+		inbox = create(:inbox)
+		presentation_template = create(:presentation,rule:rule,inbox:inbox)
+		message = create(:message)
+		
+		assert_difference('message.presentations.count') do
+			rule.apply_presentations_to(message)
+		end
+	end
+	
 	
 end 

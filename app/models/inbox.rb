@@ -26,10 +26,10 @@ class Inbox < ActiveRecord::Base
   end
 
   def check
-    new_messages = 0
+    new_messages_qty = 0
     self.user.rss_feeds.each do |source|
-      source.check(self.user)
+      new_messages_qty += source.new_messages.count
     end
-    return new_messages
+    return new_messages_qty
   end
 end

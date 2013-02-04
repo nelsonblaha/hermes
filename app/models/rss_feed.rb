@@ -24,17 +24,22 @@ class RssFeed < ActiveRecord::Base
   def new_messages
     new_messages = []
     Feedzirra::Feed.fetch_and_parse(self.url).entries.each do |entry|
-      if entry.entry_id.nil? || (self.messages.where(unique_identifier:entry.entry_id).count == 0 && entry.entry_id)
+      if entry.entry_id.nil? || (entry.entry_id && self.messages.where(unique_identifier:entry.entry_id).count == 0)
+        message = self.messages.create(unique_identifier:entry.entry_id)
+        
         title = entry.title || "no title"
-        traits = {'message_source_type'=>'RssFeed','message_source_id'=>self.id}
-        entry.instance_variables.each {|var| traits[var.to_s.delete("@")] = entry.instance_variable_get(var).to_s }
-        message = self.messages.create(traits_hash:traits.to_s)
-        if entry.entry_id
-          message.unique_identifier = entry.entry_id
-          message.save
+        message.traits.create(name:'title',value:title)
+
+        entry.instance_variables.each do |var| 
+          message.traits.create(name:var.to_s.delete("@"),value:entry.instance_variable_get(var).to_s)
         end
+
+        message.traits.create(name:'message_source_type',value:'rss_feed')
+        message.traits.create(name:'message_source_id',value:self.id)
+
         new_messages << message
-        message.traits.create(name:'message_source_id',value:self.id.to_s)
+
+        message.distribute!
       end
     end
     return new_messages
