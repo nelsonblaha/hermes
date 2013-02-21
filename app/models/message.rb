@@ -34,4 +34,12 @@ class Message < ActiveRecord::Base
       end
     end
   end
+
+  def message_subject
+    if trait = Trait.where(name:'title').first
+     trait.value
+    else
+      "unknown subject"
+    end
+  end
 end
