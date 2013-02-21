@@ -5,6 +5,7 @@ FactoryGirl.define do
     name "MyInbox"
     association :user
     messages_expire false
+    
     #10 minute message expiration
     message_expiration_seconds 10*60
   end
