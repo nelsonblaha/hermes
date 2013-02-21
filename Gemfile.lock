@@ -189,7 +189,7 @@ DEPENDENCIES
   jquery-rails
   mocha
   pg
-  rails (= 3.2.9)
+  rails
   sass-rails (~> 3.2.3)
   shoulda
   sqlite3
