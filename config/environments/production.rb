@@ -67,4 +67,7 @@ Hermes::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  #to aid developers, new users should be authorized by default in development environment only
+  AUTHORIZE_NEW_USERS = false
 end

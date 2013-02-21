@@ -1,3 +1,7 @@
+left off: inbox test line 23: messages are being created but are not associated with @inbox. Inbox-rule Presentation is there, but new presentations being created do not associate properly. Something wrong in Rss_feed.new_messages with leftover stuff from traits_hash
+
+generate origin traits upon creation of messages
+
 bug: ensure exhaustive test for each method
 
 bug: add 'service:' hash when message is created
@@ -20,15 +24,3 @@ to-do functions (calendar)
 		tasks that can be called for early ("what can I get started on?")
 		tasks that require x hours free time to complete (designate available time on calendar)
 	allow modification of subject line (preserve old subject line intelligently)
-
-gtalk? How can message presentation be made flexible enough to work for both gchat and email?
-
-clients
-	web
-	Glass
-	pebble
-	Android
-	iOS
-	libnotify Ubuntu
-	notification center mac (supplants iOS?)
-	Google TV?

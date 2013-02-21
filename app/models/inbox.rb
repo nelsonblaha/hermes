@@ -24,4 +24,12 @@ class Inbox < ActiveRecord::Base
     end
     unread_active
   end
+
+  def check
+    new_messages_qty = 0
+    self.user.rss_feeds.each do |source|
+      new_messages_qty += source.new_messages.count
+    end
+    return new_messages_qty
+  end
 end

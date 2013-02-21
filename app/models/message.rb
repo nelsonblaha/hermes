@@ -6,9 +6,7 @@ class Message < ActiveRecord::Base
   has_many :presentations, dependent: :destroy
   has_many :inboxes, through: :presentations
 
-  after_create :distribute
-
-  def distribute
+  def distribute!
     if self.message_source && self.message_source.user
       self.message_source.user.rules.each do |rule|
         rule.process(self)

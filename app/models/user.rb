@@ -10,8 +10,17 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :inboxes
-  has_many :rss_feeds, as: :message_sources
+  has_many :rss_feeds
   has_many :rules
+
+  after_create :authorize
+
+  def authorize
+    if AUTHORIZE_NEW_USERS
+      self.authorized = true
+      self.save
+    end
+  end
 
   def best_name
     name = self.email.scan(/(.*?)@/).first.first.downcase.titleize

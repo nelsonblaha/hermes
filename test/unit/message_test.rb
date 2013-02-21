@@ -17,4 +17,10 @@ class MessageTest < ActiveSupport::TestCase
 		assert_nil message.value('age')
 	end
 
+	test 'distribute' do
+		#TODO
+	end
+
+	
+
 end

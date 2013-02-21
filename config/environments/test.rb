@@ -34,4 +34,7 @@ Hermes::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  #to aid developers, new users should be authorized by default in development environment only
+  AUTHORIZE_NEW_USERS = false
 end

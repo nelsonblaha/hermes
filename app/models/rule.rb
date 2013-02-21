@@ -1,11 +1,10 @@
 class Rule < ActiveRecord::Base
-  attr_accessible :name, :user_id, :passing_children_needed_to_pass, :parent_rule_id
+  attr_accessible :name, :user_id, :passing_children_needed_to_pass, :parent_rule_id, :passing_traits_needed_to_pass
 
   belongs_to :user
   has_many :presentations
   has_many :traits, as: :traited
 
-  # TODO test
   def child_rules_pass?(message)
     if self.passing_children_needed_to_pass.nil?
       return true
