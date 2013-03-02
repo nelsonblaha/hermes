@@ -7,4 +7,8 @@
 	<% if @message.message_source %>
 		<p class="centering">source: <%= @message.message_source.name %> (<%= @message.message_source.common_name %>)</p>
 	<% end %>
+
+      <% @message.traits.each do |trait| %>
+        <p><b><%= trait.name %></b>: <%= trait.value %></p>
+      <% end %>
 </div>
