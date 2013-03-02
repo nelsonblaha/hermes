@@ -15,7 +15,7 @@ class RssFeed < ActiveRecord::Base
     news = Inbox.where(template:'news',user_id:self.user.id).first_or_create
     news.name ||= "News"
     news.save
-    rule = Rule.create(name:'Send all messages from source: '+self.name+'(RSS Feed) to inbox: '+news.name,user_id:self.user_id)
+    rule = Rule.create(name:'Send all messages from source: '+self.name+' (RSS Feed) to inbox: '+news.name,user_id:self.user_id)
     trait = rule.traits.create(name:'message_source_id',value:self.id.to_s)
     trait = rule.traits.create(name:'message_source_type',value:'rss_feed')
     presentation = rule.presentations.create(inbox_id:news.id)

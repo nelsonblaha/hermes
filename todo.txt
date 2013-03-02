@@ -1,4 +1,4 @@
-left off: inbox test line 23: messages are being created but are not associated with @inbox. Inbox-rule Presentation is there, but new presentations being created do not associate properly. Something wrong in Rss_feed.new_messages with leftover stuff from traits_hash
+left off: writing rss feed test of default inbox generation or use for a new RSS feed
 
 generate origin traits upon creation of messages
 
