@@ -2,7 +2,7 @@ class Message < ActiveRecord::Base
   attr_accessible :resolved, :message_source_id, :message_source_type, :read, :traits_hash, :unique_identifier
 
   belongs_to :message_source, polymorphic: true
-  has_many :traits, as: :traited
+  has_many :traits, as: :traited, dependent: :destroy
   has_many :presentations, dependent: :destroy
   has_many :inboxes, through: :presentations
 
