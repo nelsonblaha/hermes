@@ -1,4 +1,7 @@
 Hermes::Application.configure do
+  TWITTER_KEY = ENV["TWITTER_DEVELOPMENT_KEY"]
+  TWITTER_SECRET = ENV["TWITTER_DEVELOPMENT_SECRET"]
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # The test environment is used exclusively to run your application's

@@ -1,6 +1,6 @@
 Hermes::Application.configure do
-  TWITTER_KEY = "BmYDKdu6Sb3VY2SiKn6HKw"
-  TWITTER_SECRET = "DjuTZgfoDpjWgUkUlT8ULledScGJJhnt59PKIRdZyX0"
+  TWITTER_KEY = ENV["TWITTER_DEVELOPMENT_KEY"]
+  TWITTER_SECRET = ENV["TWITTER_DEVELOPMENT_SECRET"]
 
   # Settings specified here will take precedence over those in config/application.rb
 
