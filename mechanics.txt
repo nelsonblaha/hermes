@@ -4,5 +4,6 @@ TWITTER_DEVELOPMENT_KEY: abcxyz123
 TWITTER_DEVELOPMENT_SECRET: abcxyz123
 TWITTER_PRODUCTION_KEY: abcxyz123
 TWITTER_PRODUCTION_SECRET: abcxyz123
+APPLICATION_SECRET_TOKEN: abcxyz123
 
 Check Figaro's documentation for Heroku usage, they have some easy stuff there.
