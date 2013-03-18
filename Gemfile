@@ -6,6 +6,7 @@ gem 'httparty'
 gem 'devise'
 #for parsing rss feeds
   gem 'feedzirra'
+gem 'figaro'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

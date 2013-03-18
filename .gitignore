@@ -16,3 +16,5 @@
 
 # Ignore config files to avoid disclosing creds
 /config/environments/*.rb
+# Ignore application configuration
+/config/application.yml
