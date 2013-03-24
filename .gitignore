@@ -16,5 +16,6 @@
 
 # Ignore config files to avoid disclosing creds
 /config/environments/*.rb
-# Ignore application configuration
+
+# Ignore application configuration for Figaro
 /config/application.yml
