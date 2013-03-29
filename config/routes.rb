@@ -24,7 +24,7 @@ Hermes::Application.routes.draw do
   match '/inbox_resolve_all_messages' => 'inboxes#resolve_all_messages'
   match '/inbox_check_for_messages' => 'inboxes#check_for_messages'
 
-  devise_for :users
+  devise_for :users, :path => "accounts", :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
 
   resources :users
 
