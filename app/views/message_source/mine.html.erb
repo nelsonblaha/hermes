@@ -1,12 +1,24 @@
 <table>
 	<tr>
-		<th>Name</th>
+		<th>RSS Feeds</th>
 	</tr>
 	<% @message_sources.each do |source| %>
 		<tr>
 			<td><%= link_to source.name, source %></td>
 		</tr>	
 	<% end %>
+</table>
+
+<table>
+      <tr>
+        <th>Twitter Accounts</th>
+      </tr>
+      <% @twitters.each do |twitter| %>
+        <tr>
+          <td><%= twitter.name %></td>
+        </tr> 
+      <% end %>
+
 </table>
 
 <p><%= link_to 'new message source', message_source_directory_path %></p>

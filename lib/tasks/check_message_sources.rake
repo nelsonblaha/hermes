@@ -7,4 +7,7 @@ task :check => :environment do
 			"could not check RSS feed: "+rss.name
 		end
 	end
+      Authorization.where(provider:"twitter").each do |twitter|
+        twitter.check(twitter.user)
+      end
 end

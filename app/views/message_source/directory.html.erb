@@ -1,2 +1,5 @@
 <h1>Avaliable Message Sources</h1>
+<% if current_user && current_user.has_auth("twitter") %>
+  <p>Twitter Feed Connected</p>
+<% end %>
 <p><%= link_to 'Create New RSS Feed',new_rss_feed_path %></p>

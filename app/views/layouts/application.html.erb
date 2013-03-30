@@ -17,7 +17,7 @@
 	<h2><%= link_to " ~ Hermes ~ ", root_url %></h2>
 </div>
 
-<% if (current_user && current_user.authorized) || request.fullpath == '/users/sign_in' || request.fullpath == '/users/sign_up' %>
+<% if (current_user && current_user.authorized) || request.fullpath == '/accounts/sign_in' || request.fullpath == '/accounts/sign_up' %>
 	<%= render 'layouts/navigation' %>
 	<%= yield %>
 <% end %>

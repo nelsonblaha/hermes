@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130324211827) do
+ActiveRecord::Schema.define(:version => 20130330020209) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(:version => 20130324211827) do
     t.string   "secret"
     t.string   "name"
     t.string   "link"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "last_item_id",  :limit => 8
+    t.string   "refresh_token"
   end
 
   create_table "inboxes", :force => true do |t|
@@ -85,7 +87,7 @@ ActiveRecord::Schema.define(:version => 20130324211827) do
   create_table "users", :force => true do |t|
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
+    t.string   "email",                  :default => ""
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

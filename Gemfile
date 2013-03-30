@@ -3,11 +3,11 @@ source 'https://rubygems.org'
 gem 'rails'
 
 gem 'httparty'
-gem 'devise'
 #for parsing rss feeds
   gem 'feedzirra'
 gem 'figaro'
 gem 'omniauth-twitter'
+gem 'twitter'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

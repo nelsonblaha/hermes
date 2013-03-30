@@ -4,6 +4,7 @@ class MessageSourceController < ApplicationController
 
   def mine
   	@message_sources = RssFeed.where(user_id:current_user.id)
+      @twitters = Authorization.where(user_id:current_user.id,provider:"twitter")
   end
 
   def check
