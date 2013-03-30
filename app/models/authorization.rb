@@ -43,8 +43,8 @@ class Authorization < ActiveRecord::Base
   def new_messages
     new_messages = []
     self.tweets.each do |tweet|
-      if tweet.id && self.messages.where(unique_identifier:tweet.id).count == 0
-        message = self.messages.create(unique_identifier:tweet.id)
+      if tweet.id && self.messages.where(unique_identifier:tweet.id.to_s).count == 0
+        message = self.messages.create(unique_identifier:tweet.id.to_s)
 
         title = tweet.text || "no title"
         message.traits.create(name:'title',value:title)
