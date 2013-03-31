@@ -45,7 +45,7 @@ class Rule < ActiveRecord::Base
       # TODO enable rules to have multiple parents, so child rules can be reused by different parents
       self.traits.each do |rule_trait|
         pass = false
-        Trait.where(traited_id:message.id,traited_type:'message',name:rule_trait.name).each do |matching_message_trait|
+        Trait.where(traited_id:message.id,traited_type:'Message',name:rule_trait.name).each do |matching_message_trait|
           if rule_trait.pass?(matching_message_trait.value)
             pass = true
           end
@@ -74,7 +74,9 @@ class Rule < ActiveRecord::Base
 
   def pass?(message)
     if self.child_rules_pass?(message) && self.traits_pass?(message)
-      true
+      return true
+    else
+      return false
     end
   end
 
