@@ -36,7 +36,7 @@ class Authorization < ActiveRecord::Base
     news.save
     rule = Rule.create(name:'Send all messages from Twitter to inbox: '+news.name,user_id:self.user_id,passing_traits_needed_to_pass:0,passing_children_needed_to_pass:0)
     trait = rule.traits.create(name:'message_source_id',value:self.id.to_s)
-    trait = rule.traits.create(name:'message_source_type',value:'authorization')
+    trait = rule.traits.create(name:'message_source_type',value:'Authorization')
     presentation = rule.presentations.create(inbox_id:news.id)
   end
 
@@ -53,7 +53,7 @@ class Authorization < ActiveRecord::Base
           message.traits.create(name:var[0].to_s.delete(":"),value:var[1].to_s)
         end
 
-        message.traits.create(name:'message_source_type',value:'twitter')
+        message.traits.create(name:'message_source_type',value:'Authorization')
         message.traits.create(name:'message_source_id',value:self.id)
 
         new_messages << message
