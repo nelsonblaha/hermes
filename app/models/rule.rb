@@ -60,7 +60,7 @@ class Rule < ActiveRecord::Base
       end
       
       #pass if enough are met. If needed_to_pass is 0, pass if all passed
-      if (satisfied > needed_to_pass) || (needed_to_pass == 0 && all_passed)
+      if (satisfied > needed_to_pass && needed_to_pass > 0) || (needed_to_pass == 0 && all_passed)
         true
       elsif at_least_one_fail == true
         false

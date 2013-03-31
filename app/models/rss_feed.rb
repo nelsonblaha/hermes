@@ -24,8 +24,9 @@ class RssFeed < ActiveRecord::Base
   def new_messages
     new_messages = []
     Feedzirra::Feed.fetch_and_parse(self.url).entries.each do |entry|
-      if entry.entry_id.nil? || (entry.entry_id && self.messages.where(unique_identifier:entry.entry_id).count == 0)
-        message = self.messages.create(unique_identifier:entry.entry_id)
+      #TODO better unique identifier, this one sucks
+      if entry.published && self.messages.where(message_source_id:self.id,unique_identifier:entry.published).count == 0
+        message = self.messages.create(unique_identifier:entry.published,message_source_id:self.id)
 
         title = entry.title || "no title"
         message.traits.create(name:'title',value:title)
