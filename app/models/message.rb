@@ -6,6 +6,14 @@ class Message < ActiveRecord::Base
   has_many :presentations, dependent: :destroy
   has_many :inboxes, through: :presentations
 
+  def source
+    if self.message_source_type == "RssFeed"
+      self.message_source.name+" (RSS)"
+    elsif self.message_source_type == "Authorization"
+      "@"+self.traits.where(name:"user_screen_name").first.value
+    end
+  end
+
   def distribute!
     if self.message_source && self.message_source.user
       self.message_source.user.rules.each do |rule|

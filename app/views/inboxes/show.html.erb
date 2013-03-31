@@ -15,12 +15,14 @@
 			<th><%= link_to 'Resolve All', inbox_resolve_all_messages_path(id:@inbox.id) %></th>
 		</tr>
 		<tr>
+			<th>Source</th>
 			<th>Subject</th>
 			<th>Dismiss</th>
 			<th>Resolve</th>
 		</tr>
 		<% @active_messages.each do |m| %>
 			<tr>
+				<td><%= m.source %></td>
 				<td class="message_subject">
 					<% if m.read %>
 						<i><%= link_to m.message_subject,m %></i>

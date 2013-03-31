@@ -49,8 +49,13 @@ class Authorization < ActiveRecord::Base
         title = tweet.text || "no title"
         message.traits.create(name:'title',value:title)
 
+        # get twitter-specific stuff buried under 'user' var and make traits from it prefixed with 'user_'
+        tweet.user.attrs.each do |var|
+          message.traits.create(name:"user_"+var[0].to_s.delete(":"),value:var[1].to_s)
+        end
+
         tweet.attrs.each do |var| 
-          message.traits.create(name:var[0].to_s.delete(":"),value:var[1].to_s)
+            message.traits.create(name:var[0].to_s.delete(":"),value:var[1].to_s)
         end
 
         message.traits.create(name:'message_source_type',value:'Authorization')
