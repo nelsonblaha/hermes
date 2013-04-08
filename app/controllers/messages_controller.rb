@@ -88,11 +88,19 @@ class MessagesController < ApplicationController
 
   def resolve
     @message = Message.find(params[:id])
-    return_url = params[:return_url]
 
     @message.resolved = true
     @message.save
 
+    return_url = params[:return_url]
     redirect_to return_url
+  end
+
+  def clear_resolved
+    Message.where(resolved:true).each do |m|
+      m.traits.destroy_all
+    end
+    Message.where(resolved:true).destroy_all
+    redirect_to root_url
   end
 end

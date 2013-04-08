@@ -11,6 +11,11 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+<div id="admin">
+  Traits: <%= Trait.count %>/10000
+  <%= link_to "(clear)", clear_resolved_path %>
+</div>
+
 <%= render 'layouts/session' %>
 
 <div id="logo" class="centered">

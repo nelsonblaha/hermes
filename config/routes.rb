@@ -1,5 +1,7 @@
 Hermes::Application.routes.draw do
   
+  match "/clear_resolved" => 'messages#clear_resolved'
+
   # message sources
     get "message_source/directory", as: 'message_source_directory'
     get "message_source/mine", as: 'my_message_sources'

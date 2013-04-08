@@ -46,4 +46,13 @@ class MessagesControllerTest < ActionController::TestCase
 
     assert_redirected_to messages_path
   end
+
+  test "should resolve message" do
+    @message.resolved = nil
+    assert_nil @message.resolved
+
+    put :resolve, id: @message
+
+    assert_false @message.resolved
+  end
 end
