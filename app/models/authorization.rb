@@ -43,7 +43,7 @@ class Authorization < ActiveRecord::Base
 
   def default_traits_creation
     # keeping all the traits is too expensive... specific traits to be generated for each message are authorized here by trait objects attached to the rss_feed.
-    trait = self.traits.create(name:"user_screen_name")
+    trait = self.traits.create(name:"screen_name")
     trait = self.traits.create(name:"title")
     trait = self.traits.create(name:"subject")
     trait = self.traits.create(name:"sender")
