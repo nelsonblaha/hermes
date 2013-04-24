@@ -3,6 +3,8 @@ class Trait < ActiveRecord::Base
 
   belongs_to :message, polymorphic: true
   belongs_to :rule, polymorphic: true
+  belongs_to :rss_feed, polymorphic: true
+  belongs_to :authorization, polymorphic: true
 
   def modes
   	{1=>'exact match',2=>"contains (case-agnostic)",3=>"contains (case-sensitive)"}

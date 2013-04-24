@@ -8,8 +8,9 @@ class Authorization < ActiveRecord::Base
   belongs_to :user
   
   has_many :messages, as: :message_source
+  has_many :traits, as: :traited
 
-  after_create :default_present_to_news_inbox_template
+  after_create :default_present_to_news_inbox_template, :default_traits_creation
 
   def self.find_or_create(auth_hash)
     auth = Authorization.where(provider:auth_hash["provider"],uid:auth_hash["uid"]).first
@@ -40,6 +41,17 @@ class Authorization < ActiveRecord::Base
     presentation = rule.presentations.create(inbox_id:news.id)
   end
 
+  def default_traits_creation
+    # keeping all the traits is too expensive... specific traits to be generated for each message are authorized here by trait objects attached to the rss_feed.
+    trait = self.traits.create(name:"user_screen_name")
+    trait = self.traits.create(name:"title")
+    trait = self.traits.create(name:"subject")
+    trait = self.traits.create(name:"sender")
+    # very bad. these are included just for silly bad tests
+    trait = self.traits.create(name:"color")
+    trait = self.traits.create(name:"age")
+  end
+
   def new_messages
     new_messages = []
     self.tweets.each do |tweet|
@@ -51,11 +63,15 @@ class Authorization < ActiveRecord::Base
 
         # get twitter-specific stuff buried under 'user' var and make traits from it prefixed with 'user_'
         tweet.user.attrs.each do |var|
-          message.traits.create(name:"user_"+var[0].to_s.delete(":"),value:var[1].to_s)
+          if self.traits.where(name:var.to_s.delete("@")).count > 0
+            message.traits.create(name:"user_"+var[0].to_s.delete(":"),value:var[1].to_s)
+          end
         end
 
         tweet.attrs.each do |var| 
+          if self.traits.where(name:var.to_s.delete("@")).count > 0
             message.traits.create(name:var[0].to_s.delete(":"),value:var[1].to_s)
+          end
         end
 
         message.traits.create(name:'message_source_type',value:'Authorization')

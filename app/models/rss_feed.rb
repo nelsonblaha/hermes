@@ -6,8 +6,9 @@ class RssFeed < ActiveRecord::Base
 
   belongs_to :user
   has_many :messages, as: :message_source
+  has_many :traits, as: :traited
 
-  after_create :default_present_to_news_inbox_template
+  after_create :default_present_to_news_inbox_template, :default_traits_creation
 
   validates :user, presence: true
 
@@ -21,6 +22,16 @@ class RssFeed < ActiveRecord::Base
     presentation = rule.presentations.create(inbox_id:news.id)
   end
 
+  def default_traits_creation
+    # keeping all the traits is too expensive... specific traits to be generated for each message are authorized here by trait objects attached to the rss_feed.
+    trait = self.traits.create(name:"title")
+    trait = self.traits.create(name:"subject")
+    trait = self.traits.create(name:"sender")
+    # very bad. these are included just for silly bad tests
+    trait = self.traits.create(name:"color")
+    trait = self.traits.create(name:"age")
+  end
+
   def new_messages
     new_messages = []
     Feedzirra::Feed.fetch_and_parse(self.url).entries.each do |entry|
@@ -32,7 +43,9 @@ class RssFeed < ActiveRecord::Base
         message.traits.create(name:'title',value:title)
 
         entry.instance_variables.each do |var| 
-          message.traits.create(name:var.to_s.delete("@"),value:entry.instance_variable_get(var).to_s)
+          if self.traits.where(name:var.to_s.delete("@")).count > 0
+            message.traits.create(name:var.to_s.delete("@"),value:entry.instance_variable_get(var).to_s)
+          end
         end
 
         message.traits.create(name:'message_source_type',value:'rss_feed')
