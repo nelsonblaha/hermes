@@ -12,7 +12,8 @@
 <p class="alert"><%= alert %></p>
 
 <div id="admin">
-  Traits: <%= Trait.count %>/10000
+  <p>Traits: <%= Trait.count %>/10000</p>
+  <p>Messages: <%= Message.count %></p>
   <%= link_to "(clear)", clear_resolved_path %>
 </div>
 
