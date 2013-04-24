@@ -97,9 +97,6 @@ class MessagesController < ApplicationController
   end
 
   def clear_resolved
-    Message.where(resolved:true).each do |m|
-      Trait.where(traited_type:"message")
-    end
     Message.where(resolved:true).destroy_all
     redirect_to root_url
   end
