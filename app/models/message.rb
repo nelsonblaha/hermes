@@ -10,7 +10,12 @@ class Message < ActiveRecord::Base
     if self.message_source_type == "RssFeed"
       self.message_source.name+" (RSS)"
     elsif self.message_source_type == "Authorization"
-      "@"+self.traits.where(name:"user_screen_name").first.value
+      user_traits = self.traits.where(name:"user_screen_name")
+      if user_traits.first
+        "@"+ user_traits.first.value
+      else
+        "Unknown User"
+      end
     end
   end
 
