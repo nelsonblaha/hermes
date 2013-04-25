@@ -62,9 +62,9 @@ class Authorization < ActiveRecord::Base
         message.traits.create(name:'title',value:title)
 
         # get twitter-specific stuff buried under 'user' var and make traits from it prefixed with 'user_'
-        tweet.user.attrs.each do |var|
-          if self.traits.where(name:var.to_s.delete("@")).count > 0
-            message.traits.create(name:"user_"+var[0].to_s.delete(":"),value:var[1].to_s)
+        tweet.user.attrs.each_key do |key|
+          if self.traits.where(name:key.to_s.delete("@")).count > 0
+            message.traits.create(name:"user_"+key.to_s,value:tweet.user[key.to_s].to_s)
           end
         end
 
