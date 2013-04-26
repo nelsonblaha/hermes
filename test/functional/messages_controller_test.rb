@@ -51,8 +51,9 @@ class MessagesControllerTest < ActionController::TestCase
     @message.resolved = nil
     assert_nil @message.resolved
 
-    put :resolve, id: @message
+    put :resolve, id: @message, return_url: "/"
 
-    assert_false @message.resolved
+    @message = Message.find(@message.id)
+    assert @message.resolved
   end
 end
