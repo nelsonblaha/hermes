@@ -6,6 +6,7 @@ gem 'httparty'
 #for parsing rss feeds
   gem 'feedzirra'
 gem 'figaro'
+
 gem 'omniauth-twitter'
 gem 'twitter'
 
@@ -35,6 +36,7 @@ end
 group :assets do
   gem 'sass-rails'
   gem 'less-rails'
+  gem 'twitter-bootstrap-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer'
   gem 'uglifier'
