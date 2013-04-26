@@ -10,4 +10,7 @@ div.message{
   &.selected{
     border:2px dotted black;
   }
+  input{
+    width:300px;
+  }
 }

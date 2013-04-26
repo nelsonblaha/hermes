@@ -22,7 +22,7 @@ group :test do
 end
 
 group :test, :development do
-	gem "factory_girl_rails", "~> 4.0"
+	gem "factory_girl_rails"
 	gem 'faker'
 end
 
@@ -33,10 +33,11 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails'
+  gem 'less-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', '0.10.0', :platforms => :ruby
-  gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer'
+  gem 'uglifier'
 end
 
 gem 'jquery-rails'
