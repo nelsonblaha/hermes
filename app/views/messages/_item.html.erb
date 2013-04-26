@@ -1,0 +1,6 @@
+<div class="message">
+  <%= link_to 'dismiss', Presentation.where(message_id:message.id,inbox_id:@inbox.id).first, method: :delete %>
+  <%= link_to 'resolve', resolve_message_path(id:message.id,return_url:request.fullpath) %>
+  <b><%= message.source %></b>
+  <%= message.message_subject %>
+</div>
