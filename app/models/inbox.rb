@@ -30,6 +30,9 @@ class Inbox < ActiveRecord::Base
     self.user.rss_feeds.each do |source|
       new_messages_qty += source.new_messages.count
     end
+    self.user.authorizations.each do |authorization|
+      new_messages_qty += authorization.new_messages.count
+    end
     return new_messages_qty
   end
 end
