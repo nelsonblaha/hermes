@@ -64,3 +64,4 @@ function InboxCtrl($scope, $http) {
     });
   });
 }
+InboxCtrl.$inject = ['$scope', '$http'];
