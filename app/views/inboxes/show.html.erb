@@ -1,4 +1,4 @@
-<div ng-controller="InboxCtrl" ng-init="inboxId = <%= @inbox.id %>">
+<div id="inbox" ng-controller="InboxCtrl" ng-init="inboxId = <%= @inbox.id %>">
 
   <div id="command" class="modal hide fade in">
   	<%= render 'inboxes/command' %>
@@ -6,7 +6,7 @@
 
   <p id="notice"><%= notice %></p>
 
-  <h1 id="inbox" data-inbox-id=<%= @inbox.id %>>inbox: <%= @inbox.name %></h1>
+  <h2 id="inbox" data-inbox-id=<%= @inbox.id %>><%= @inbox.name %></h2>
 
   <p><%= link_to 'Check Inbox', inbox_check_for_messages_path(id:@inbox.id)%></p>
 
@@ -18,7 +18,7 @@
   <% if @active_messages.empty? %>
   	<p><i>no messages</i></p>
   <% else %>
-  	<p><i><%= @active_messages.count.to_s %> messages</i></p>
+  	<p><i>{{messages.length}} messages</i></p>
 
     <div ng-repeat="message in messages" class="message" ng-class="{'cursored': $index == cursoredMessage}">
       <b>{{message.source}}</b>: <a href="{{message.url}}">{{message.title}}</a>

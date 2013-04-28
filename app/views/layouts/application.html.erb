@@ -12,15 +12,13 @@
 <p class="alert"><%= alert %></p>
 
 <div id="admin">
-  <p>Traits: <%= Trait.count %>/10000</p>
-  <p>Messages: <%= Message.count %></p>
-  <%= link_to "(clear)", clear_resolved_path %>
+  <p><%= Trait.count %> traits in use of 10000. <%= link_to "(clear)", clear_resolved_path %></p>
 </div>
 
 <%= render 'layouts/session' %>
 
 <div id="logo" class="centered">
-	<h2><%= link_to " ~ Hermes ~ ", root_url %></h2>
+	<h3><%= link_to "Hermes", root_url %></h3>
 </div>
 
 <% if (current_user && current_user.authorized) || request.fullpath == '/accounts/sign_in' || request.fullpath == '/accounts/sign_up' %>
