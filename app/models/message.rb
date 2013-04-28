@@ -62,6 +62,7 @@ class Message < ActiveRecord::Base
     message["source"] = self.source
     message["title"] = self.message_subject
     message["id"] = self.id
+    message["url"] = self.value("url")
 
     traits.each do |t|
       message[t] = self.value(t)

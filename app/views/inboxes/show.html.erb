@@ -21,9 +21,7 @@
   	<p><i><%= @active_messages.count.to_s %> messages</i></p>
 
     <div ng-repeat="message in messages" class="message" ng-class="{'cursored': $index == cursoredMessage}">
-      <%#= link_to 'dismiss', Presentation.where(message_id:message.id,inbox_id:@inbox.id).first, method: :delete %>
-      <%#= link_to 'resolve', resolve_message_path(id:message.id,return_url:request.fullpath) %>
-      <b>{{message.source}}</b>: {{message.title}}
+      <b>{{message.source}}</b>: <a href="{{message.url}}">{{message.title}}</a>
     </div>
     
   <% end %>

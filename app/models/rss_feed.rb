@@ -27,9 +27,11 @@ class RssFeed < ActiveRecord::Base
     trait = self.traits.create(name:"title")
     trait = self.traits.create(name:"subject")
     trait = self.traits.create(name:"sender")
+    trait = self.traits.create(name:"url")
     # very bad. these are included just for silly bad tests
-    trait = self.traits.create(name:"color")
-    trait = self.traits.create(name:"age")
+      trait = self.traits.create(name:"color")
+      trait = self.traits.create(name:"age")
+
   end
 
   def new_messages

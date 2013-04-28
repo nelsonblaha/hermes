@@ -68,6 +68,9 @@ class Authorization < ActiveRecord::Base
           end
         end
 
+        #build the twitter-specific url to tweet
+        message.traits.create(name:"url",value:"http://www.twitter.com/"+tweet.user.screen_name+"/status/"+tweet.id.to_s)        
+
         tweet.attrs.each do |var| 
           if self.traits.where(name:var.to_s.delete("@")).count > 0
             message.traits.create(name:var[0].to_s.delete(":"),value:var[1].to_s)
