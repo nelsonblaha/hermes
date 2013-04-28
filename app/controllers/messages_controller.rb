@@ -88,12 +88,10 @@ class MessagesController < ApplicationController
 
   def resolve
     @message = Message.find(params[:id])
-
     @message.resolved = true
+    @message.presentations.destroy_all
     @message.save
-
-    return_url = params[:return_url]
-    redirect_to return_url
+    head :no_content
   end
 
   def clear_resolved

@@ -25,6 +25,7 @@ Hermes::Application.routes.draw do
   resources :inboxes
   match '/inbox_resolve_all_messages' => 'inboxes#resolve_all_messages'
   match '/inbox_check_for_messages' => 'inboxes#check_for_messages'
+  match '/pull' => 'inboxes#pull'
 
   #omniauth
     get   '/login', :to => 'sessions#new', :as => :login

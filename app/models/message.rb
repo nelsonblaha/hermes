@@ -55,4 +55,18 @@ class Message < ActiveRecord::Base
       "unknown subject"
     end
   end
+
+  def pull_json(traits = [])
+    message = {}
+
+    message["source"] = self.source
+    message["title"] = self.message_subject
+    message["id"] = self.id
+
+    traits.each do |t|
+      message[t] = self.value(t)
+    end
+
+    return message
+  end
 end

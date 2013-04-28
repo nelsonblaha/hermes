@@ -110,4 +110,17 @@ class InboxesController < ApplicationController
       redirect_to @inbox, notice: new_messages.to_s+" new messages retrieved for this inbox."
     end
 
+    def pull
+      # An inbox must always be included
+      @inbox = Inbox.find(params[:inbox])
+
+      presentations = []
+
+      @inbox.messages.each do |m|
+        presentations << m.pull_json
+      end
+
+      render json: presentations
+    end
+
 end

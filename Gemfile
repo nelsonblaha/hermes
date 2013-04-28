@@ -34,6 +34,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'angularjs-rails'
+
   gem 'sass-rails'
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'

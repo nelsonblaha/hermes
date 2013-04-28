@@ -1,29 +1,35 @@
-<div id="command" class="modal hide fade in">
-	<%= render 'inboxes/command' %>
+<div ng-controller="InboxCtrl" ng-init="inboxId = <%= @inbox.id %>">
+
+  <div id="command" class="modal hide fade in">
+  	<%= render 'inboxes/command' %>
+  </div>
+
+  <p id="notice"><%= notice %></p>
+
+  <h1 id="inbox" data-inbox-id=<%= @inbox.id %>>inbox: <%= @inbox.name %></h1>
+
+  <p><%= link_to 'Check Inbox', inbox_check_for_messages_path(id:@inbox.id)%></p>
+
+  <!-- TODO ajax link to: post "message_sources/:message_id/check" -->
+
+  <%= link_to 'Dismiss All', Presentation.where(inbox_id:@inbox.id).first, method: :delete %>
+  <%= link_to 'Resolve All', inbox_resolve_all_messages_path(id:@inbox.id) %>
+
+  <% if @active_messages.empty? %>
+  	<p><i>no messages</i></p>
+  <% else %>
+  	<p><i><%= @active_messages.count.to_s %> messages</i></p>
+
+    <div ng-repeat="message in messages" class="message" ng-class="{'cursored': $index == cursoredMessage}">
+      <%#= link_to 'dismiss', Presentation.where(message_id:message.id,inbox_id:@inbox.id).first, method: :delete %>
+      <%#= link_to 'resolve', resolve_message_path(id:message.id,return_url:request.fullpath) %>
+      <b>{{message.source}}</b>: {{message.title}}
+    </div>
+    
+  <% end %>
+
+  <p><%= link_to 'rules affecting this inbox',rules_index_for_inbox_path(id:@inbox.id) %></p>
+
+  <%= link_to 'Edit', edit_inbox_path(@inbox) %> |
+  <%= link_to 'Back', root_url %>
 </div>
-
-<p id="notice"><%= notice %></p>
-
-<h1>inbox: <%= @inbox.name %></h1>
-
-<p><%= link_to 'Check Inbox', inbox_check_for_messages_path(id:@inbox.id)%></p>
-
-<!-- TODO ajax link to: post "message_sources/:message_id/check" -->
-
-<%= link_to 'Dismiss All', Presentation.where(inbox_id:@inbox.id).first, method: :delete %>
-<%= link_to 'Resolve All', inbox_resolve_all_messages_path(id:@inbox.id) %>
-
-<% if @active_messages.empty? %>
-	<p><i>no messages</i></p>
-<% else %>
-	<p><i><%= @active_messages.count.to_s %> messages</i></p>
-
-	<% @active_messages.each do |m| %>
-		<%= render 'messages/item', message: m %>
-	<% end %>
-<% end %>
-
-<p><%= link_to 'rules affecting this inbox',rules_index_for_inbox_path(id:@inbox.id) %></p>
-
-<%= link_to 'Edit', edit_inbox_path(@inbox) %> |
-<%= link_to 'Back', root_url %>

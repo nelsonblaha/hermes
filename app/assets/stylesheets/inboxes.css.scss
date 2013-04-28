@@ -6,6 +6,9 @@ div.message{
   &.selected{
     border:2px dotted black;
   }
+  &.cursored{
+    border:5px solid black;
+  }
   input{
     width:300px;
   }
