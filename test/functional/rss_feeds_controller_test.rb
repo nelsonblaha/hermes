@@ -56,7 +56,7 @@ class RssFeedsControllerTest < ActionController::TestCase
   end
 
   test "should update rss_feed" do
-    put :update, id: @rss_feed, rss_feed: attributes_for(:rss_feed)
+    put :update, id: @rss_feed, rss_feed: FactoryGirl.attributes_for(:rss_feed)
     assert_redirected_to rss_feed_path(assigns(:rss_feed))
   end
 

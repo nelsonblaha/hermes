@@ -2,9 +2,7 @@
 
 FactoryGirl.define do
   factory :rss_feed do
-	user_id 1
     name "MyFeed"
-    # TODO: why doesn't this work instead of what I ended up using below?- association :user
     user
     url "http://hermesbeta.herokuapp.com/sample_rss_for_service_account_test.rss"
   end
