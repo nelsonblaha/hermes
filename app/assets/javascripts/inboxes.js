@@ -55,7 +55,10 @@ function InboxCtrl($scope, $http) {
         }
         // command dialog toggle a
         if (e.which == 97) {
-          $('div#command').modal("toggle");
+          // $('div#command').modal("toggle").on('hidden', function(){
+          //   console.log('modal hidden');
+          // });
+         $('div#command').modal("toggle")
           window.setTimeout(function(){
             $('div#command input').focus();
           },400);

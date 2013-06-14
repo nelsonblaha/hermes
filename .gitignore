@@ -19,3 +19,6 @@
 
 # Ignore application configuration for Figaro
 /config/application.yml
+
+# ignore precompiled assets
+/public

@@ -35,7 +35,6 @@ end
 # in production environments by default.
 group :assets do
   gem 'angularjs-rails'
-
   gem 'sass-rails'
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
